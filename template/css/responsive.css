@@ -1,0 +1,536 @@
+/*For bigger screen then normal 960px desktop*/
+@media (min-width: 1200px) {
+
+
+}
+
+/*Use if needed*/
+@media (min-width: 992px) and (max-width: 1199px) {
+  .minimalio-single-team-skill > p{
+    width: 25%;
+  }
+
+  .minimalio-team-skill{
+    width: 64%;
+  }
+
+  .minimalio-skill-percentage{
+    font-size: 14px;
+    margin-left: 0px;
+  }
+
+  .minimalio-menu-section .minimalio-overlay ul li{
+    height: calc(100% / 5.5);  
+  }
+
+  .minimalio-single-blog-headNdate h1{
+    font-size: 40px;
+  }
+
+}
+
+/*For Tablet Layout*/
+@media (min-width: 768px) and (max-width: 991px) {
+  .minimalio-menu-section .minimalio-overlay nav{
+    font-size: 40px;
+  }
+
+  .minimalio-menu-section .minimalio-overlay ul{
+    margin-top: 60px;
+  }
+
+  .minimalio-menu-section .minimalio-overlay ul li{
+    height: calc(100% / 6);
+  }
+
+
+
+  .minimalio-ceo-descriptions{
+    width: 90%;
+  }
+
+  .minimalio-ceo-details{
+    padding: 40px;
+  }
+
+  .minimalio-ceo-details h2{
+    font-size: 20px;
+  }
+
+  .minimalio-ceo-details p{
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .minimalio-hire-me-button{
+    margin-top: 50px;
+    padding: 0px;
+  }
+
+  /*Style for Blog Page in Tablet*/
+  .minimalio-blog-describe-section{
+    padding: 20px;
+  }
+
+  .minimalio-blog-catagories,
+  .minimalio-blog-tags{
+    padding: 40px 10px;
+  }
+
+  .minimalio-blog-tags li a {
+      padding: 15px 10px;
+  }
+
+  .minimalio-single-blog-headNdate h1{
+    font-size: 30px;
+  }
+
+  /*Style for Contact Page in Tablet*/
+  .minimalio-contact-details-section{
+    padding: 75px 0;
+  }
+
+  #minimalio-map-section{
+    height: 300px;
+  }
+
+  /*Style for About Page in Tablet*/
+  .minimalio-about-ones-details{
+    padding: 75px 0;
+  }
+
+  .minimalio-skill-progress-bar-list{
+    padding: 50px 15px 75px;
+  }
+
+  .minimalio-single-team-skill{
+    padding: 30px 5px;
+  }
+
+  .minimalio-single-team-skill > p{
+    width: 28%;
+  }
+
+  .minimalio-team-skill{
+    width: 60%;
+  }
+  .minimalio-equal-grid .minimalio-grid-item {
+    width: 49.33%;
+  }
+  .minimalio-equal-grid.minimalio-grid-gutter .minimalio-grid-item {
+    margin: 1%;
+    width: 47.33%;
+  }
+  .minimalio-skill-percentage{
+    font-size: 14px;
+    margin-left: 0px;
+  }
+
+}
+
+
+/*Use if needed*/
+@media (max-width: 979px) {
+
+
+}
+
+
+/*For Wide Mobile Layout*/
+  @media (max-width: 767px) {
+  /*Common Style in Mobile Layout*/
+  .minimalio-single-welcome-section p,
+  .minimalio-ceo-details p, .minimalio-address,
+  .minimalio-email,
+  .minimalio-phone{
+    font-size: 14px;
+  }
+
+  .minimalio-contact-header-section{
+    min-height: 0;
+  }
+
+  .minimalio-header-contact-heading h2{
+    font-size: 22px;
+  }
+
+  .minimalio-header-contact-heading h2::before {
+      border-width: 15px;
+      margin-left: -15px;
+  }
+
+  .minimalio-header-contact-heading h2::after {
+      border-width: 12px;
+      margin-left: -12px;
+  }
+
+  .minimalio-contact-header-section .row:last-child{
+    padding: 30px 0 10px;
+  }
+
+  /*Style for Home and Others Pages*/
+  .minimalio-menu-section .minimalio-menu{
+    margin: 3px 15px 0 0;
+  }
+
+  .minimalio-menu-section .minimalio-overlay nav{
+    top: 50%;
+    z-index: 99999;
+  }
+
+  .minimalio-menu-section .minimalio-overlay ul li{
+    height: calc(100% / 5);
+  }
+
+  .minimalio-menu-section .minimalio-overlay ul li a{
+    font-size: 25px;
+  }
+
+  .minimalio-welcome-section{
+    width: 100%;
+    padding: 0 15px;
+    left: 0;
+  }
+
+  .minimalio-single-welcome-section h1{
+    font-size: 30px;
+  }
+
+  .minimalio-services-section {
+    padding: 25px 0;
+  }
+
+  .minimalio-services-content {
+    padding-top: 10px;
+  }
+    
+  .minimalio-services-menus ul.minimalio-lavalamp-darrow{
+    border: none;
+  }
+
+  .minimalio-lavalamp-darrow li.backLava{
+    display: none !important;
+  }
+
+  .minimalio-services-menus ul li{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .minimalio-services-menus ul li a{
+    padding: 0;
+  }
+
+  .minimalio-arrow-down.minimalio-effect-arrow::after,
+  .minimalio-arrow-down.minimalio-effect-arrow::before{
+    display: none;
+  }
+
+  .minimalio-grid-item{
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .minimalio-ceo-section {
+    padding: 70px 0 30px;
+  }
+
+  .minimalio-ceo-intro{
+    margin-bottom: 25px;
+  }
+
+  .minimalio-ceo-details{
+    margin: 0 25px 15px;
+    padding: 25px;
+  }
+
+  .minimalio-quote img{
+    top: -4.5%;
+  }
+
+  .minimalio-ceo-details h2 {
+    padding-bottom: 25px;
+    margin-left: 5px;
+  }
+
+  .minimalio-ceo-details p {
+    font-size: 14px;
+    text-align: justify;
+    padding: 30px 0 10px 0;
+  }
+
+  .minimalio-ceo-descriptions{
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .minimalio-hire-me-section{
+    padding: 50px 0;
+  }
+
+  .minimalio-hire-me strong{
+    font-size: 50px;
+  }
+
+  .minimalio-hire-me-content,
+  .minimalio-hire-me-button{
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .minimalio-hire-me-button a{
+    font-size: 25px;
+    padding: 25px;
+  }
+
+  .minimalio-address, .minimalio-email, .minimalio-phone{
+    padding-right: 0;
+  }
+
+  .minimalio-footer-section{
+    padding: 20px 0;
+  }
+
+  /*Style for Blog Page in Wide Mobile*/
+  .minimalio-blog-section{
+    padding: 20px 0 0;
+  }
+
+  .minimalio-contact-breadcrumb,
+  .minimalio-header-contact-heading,
+  .minimalio-blog-comments,
+  .minimalio-blog-readmore{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .minimalio-contact-breadcrumb{
+    margin-bottom: 15px;
+    margin-left: 10px;
+  }
+
+  .minimalio-blog-describe-section{
+    padding: inherit;
+    text-align: center;
+  }
+
+  .minimalio-blog-content{
+    padding-bottom: 10px;
+  }
+
+  .minimalio-blog-content h2{
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .minimalio-blog-comments{
+    margin-bottom: 25px;
+    margin-left: 15px;
+  }
+
+  .minimalio-blog-readmore a{
+    padding: 10px 25px;
+  }
+
+  .minimalio-blog-comments-readmore{
+    padding-bottom: 30px;
+  }
+
+  .minimalio-blog-describe-section{
+    margin-bottom: 15px;
+  }
+
+  .minimalio-blog-pagination-section{
+    text-align: center;
+    margin: 20px auto 50px;
+    width: 100%;
+    display: inline-block;
+  }
+
+  .minimalio-blog-pagination ul li{
+    display: inline-block;
+    padding-right: 5px;
+  }
+
+  .minimalio-blog-pagination ul li a,
+  .minimalio-blog-pagination ul li:first-child a{
+    padding: 8px;
+  }
+
+  .minimalio-blog-searchbox{
+    margin-bottom: 0px;
+  }
+
+  .minimalio-blog-searchbox input {
+    padding: 14px 25px;
+    width: calc(100% - 60px);
+  }
+
+  .minimalio-blog-searchbox i {
+    font-size: 15px;
+    padding: 15px;
+  }
+
+  .minimalio-blog-catagories {
+      padding: 15px 30px;
+      margin-bottom: 0px;
+  }
+
+  .minimalio-blog-tags{
+    padding: 20px 30px;
+  }
+
+  .minimalio-footer-copyright {
+      padding: 10px 0;
+  }
+
+  .minimalio-blog-tags li a{
+    padding: 10px 15px;
+  }
+
+  .minimalio-social-icons{
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+  }
+
+  /*Style for Single Blog Page in Wide Mobile*/
+  .minimalio-single-blog-headNdate h1{
+    font-size: 28px;
+  }
+
+  .minimalio-single-blog-headNdate p{
+    bottom: 80px;
+    right: -30px;
+  }
+
+  .minimalio-single-blog-ctl{
+    margin-bottom: 20px;
+  }
+  
+  .minimalio-blog-img{
+    margin-bottom: 25px;
+  }
+
+  .minimalio-single-blog-content{
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .minimalio-single-blog-content blockquote{
+    font-size: 14px;
+    margin: 20px 0 20px 25px;
+  }
+  
+  .minimalio-single-blog-shareon h2{
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  .minimalio-single-blog-shareon ul li a i{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  /*Style for Contact Page in Wide Mobile*/
+  .minimalio-contact-details-section{
+    padding: 20px 0;
+  }
+
+  .minimalio-contact-details p{
+    padding-bottom: 0px;
+    font-size: 14px;
+  }
+
+  .minimalio-form-questions input{
+    height: 65px;
+    font-size: 13px;
+  }
+
+  .minimalio-form-questions li.current > span label,
+  .no-js .questions li > span label{
+    font-size: 20px;
+  }
+
+  .minimalio-form-next-button{
+    bottom: 60px;
+    height: 65px;
+    width: 55px;
+  }
+
+  .minimalio-form-next-button::after{
+    line-height: 65px;
+    font-size: 30px;
+  }
+
+  .minimalio-simform .minimalio-progress-bar.minmalio-show-progress-bar:after{
+    border-width: 15px;
+  }
+
+  #minimalio-map-section{
+    height: 200px;
+  }
+
+  .minimalio-load-more{
+    padding-top: 15px;
+    margin-bottom: 30px;
+  }
+
+  .minimalio-load-more a{
+    padding: 15px 50px;
+  }
+
+  /*Style for About Page in Wide Mobile*/
+  .minimalio-about-ones-details{
+    padding: 20px 0;
+  }
+  
+  .minimalio-about-ones p{
+    font-size: 14px;
+  }
+
+  .minimalio-skill-progress-bar-list{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .minimalio-about-ones-title{
+    padding-bottom: 20px;
+  }
+
+  .minimalio-resume-header-title h3{
+    padding-bottom: 0px;
+  }
+
+  .minimalio-single-team-skill {
+    margin-bottom: 10px;
+    padding: 12px 10px;
+  }
+
+  .minimalio-single-team-skill > p{
+    font-size: 12px;
+    width: 30%;
+  }
+
+  .minimalio-team-skill{
+    width: 60%;
+    top: -3px;
+    height: 11px;
+  }
+
+  .minimalio-skill-percentage {
+    top: -5px;
+    width: 10%;
+    margin-left: 0px;
+    font-size: 12px;
+  }
+
+}
+
+/*For 320-384px up Mobile Layout*/
+@media (max-width: 479px) {
+
+
+}

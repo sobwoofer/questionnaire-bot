@@ -1,0 +1,2191 @@
+@charset "utf-8";
+/*------------------------------------------------------------------
+.______    __  ___   ___  __   _______  ___________    ____ 
+|   _  \  |  | \  \ /  / |  | |   ____||   ____\   \  /   / 
+|  |_)  | |  |  \  V  /  |  | |  |__   |  |__   \   \/   /  
+|   ___/  |  |   >   <   |  | |   __|  |   __|   \_    _/   
+|  |      |  |  /  .  \  |  | |  |____ |  |        |  |     
+| _|      |__| /__/ \__\ |__| |_______||__|        |__|     
+
+
+@charset "utf-8";
+
+[Main Stylesheet]
+
+Project:    Minimalio
+Version:    0.1
+Primary Use:    Minimalio - Personal / Portfolio Minimal Template
+================== Font Family Used =================
+
+[Typography]
+
+Body:      16px 'Poppins', sans-serif;
+Paragraph: 'Open Sans', sans-serif;
+
+/*=============================================
+
+[Table of contents]
+1. Minimalio Css Reset and Typography
+2. Minimalio HEADER CSS -minimalio-header-section
+    2.1 - MiniMalio - GLOBAL CSS for Overlay Menu
+3. MiniMalio - Hero Section CSS
+4.MiniMalio - Services Section CSS
+    4.1 - MiniMalio - Arrow Down in Services Section
+    4.2 - MiniMalio - minimalio-services-content
+5.MiniMalio - minimalio-quote
+6.MiniMalio - CEO Section
+    6.1 - MiniMalio - Arrow Down for CEO Section
+7.MiniMalio - Hire Me Section
+8.MiniMalio - FOOTER CSS
+9.MiniMalio - About Page CSS 
+    9.1 - MiniMalio - About Page CSS for Skill Progress Bar
+10.MiniMalio - Blog Page CSS 
+    10.1 - MiniMalio - Blog Page CSS for Pagination Section
+    10.2 - MiniMalio - Blog Page CSS for sidebar-section
+    10.3 - MiniMalio - minimalio-arrow-right in Blog Catagories
+11.MiniMalio - Single Blog Page CSS
+    11.1 - MiniMalio - Single Blog Page for Arrow Right CSS
+    11.2 - MiniMalio - Single Blog Page for Comments, Tags, Likes and ShareOn Buttons
+12.MiniMalio - Contact Page CSS
+    12.1 - MiniMalio - Contact Page CSS for Minimal Contact Form
+=======================================================*/
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #383838;
+    line-height: 1.5;
+}
+
+/*--------------------------------------------------------------
+  1. Minimalio Css Reset and Typography
+--------------------------------------------------------------*/
+a, a:active, a:focus, a:active {
+    text-decoration:none !important
+}
+
+a:focus {
+    outline:0px solid;
+}
+
+img {
+    max-width: 100%;
+}
+
+h2, h2, h3, h4, h5, h6 {
+    font-weight:normal;margin:0 0 15px;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+input{
+    -moz-box-sizing: border-box;
+     -ms-box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+}
+
+.container{
+    transition: all 0.9s ease 0s;
+    -moz-transition: all 0.9s ease 0s;
+    -webkit-transition: all 0.9s ease 0s;
+    -o-transition: all 0.9s ease 0s;
+}
+
+.alignleft {float:left;margin-right:10px;}
+.alignright {float:right;margin-left:10px;}
+.aligncenter {display:block;margin:0 auto}
+
+/* -----------------------------------------------------------------
+  2.MiniMalio - HEADER CSS -minimalio-header-section
+------------------------------------------------------------------*/
+.minimalio-header-with-hero-section{
+    position: relative;
+}
+
+.minimalio-header-section{
+    padding-top: 3.125em;
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+}
+
+.minimalio-logo{
+    display: inline-block;
+    width: 130px;
+}
+
+/* -----------------------------------------------------------------
+  2.1 - MiniMalio - GLOBAL CSS for Overlay Menu
+------------------------------------------------------------------*/
+.minimalio-menu-section .minimalio-nav-icon, .minimalio-menu-section .minimalio-nav-icon span,
+.minimalio-menu-section .minimalio-overlay, .minimalio-menu-section .minimalio-overlay:before,
+.minimalio-menu-section .minimalio-overlay:after, .minimalio-menu-section .minimalio-overlay ul li a:after{
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out
+}
+/* ============ GLOBAL CSS END ===========*/
+
+.minimalio-menu-section {
+    position:absolute;
+    height:40px;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 2
+}
+
+.minimalio-menu-section .minimalio-menu { 
+    float: right;
+    margin: 25px 0 0 0;
+}
+
+.minimalio-menu-section .minimalio-nav-icon {
+  width: 28px;
+  height: 20px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+
+.minimalio-menu-section .minimalio-nav-icon span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #272727;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg)
+}
+
+.minimalio-menu-section .minimalio-nav-icon span:nth-child(1) { 
+    top: 0px
+}
+
+.minimalio-menu-section .minimalio-nav-icon span:nth-child(2) {
+    top: 8px
+}
+
+.minimalio-menu-section .minimalio-nav-icon span:nth-child(3) { 
+    top: 16px 
+}
+
+.minimalio-menu-section .minimalio-nav-icon.active span:nth-child(1) {
+    top: 8px;
+    background-color: #b2a287;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+.minimalio-menu-section .minimalio-nav-icon.active span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+}
+
+.minimalio-menu-section .minimalio-nav-icon.active span:nth-child(3) {
+    top: 8px;
+    background-color: #b2a287;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+.minimalio-menu-section .minimalio-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: hidden;
+    z-index: -1;
+}
+
+.minimalio-menu-section .minimalio-overlay:before {
+    content: '';
+    background: #000;
+    left: -55%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    position: absolute
+}
+
+.minimalio-menu-section .minimalio-overlay:after {
+    content: '';
+    background: #000;
+    right: -55%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    position: absolute
+}
+
+.minimalio-menu-section .minimalio-overlay.open {
+    opacity: .9;
+    visibility: visible;
+    height: 100%;
+}
+
+.minimalio-menu-section .minimalio-overlay.open:before {
+    left: 0;
+}
+
+.minimalio-menu-section .minimalio-overlay.open:after {
+    right: 0;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li {
+    -webkit-animation: fadeInRight .5s ease forwards;
+    -moz-animation: fadeInRight .5s ease forwards;
+    -o-animation: fadeInRight .5s ease forwards;
+    animation: fadeInRight .5s ease forwards;
+    -webkit-animation-delay: .35s;
+    -moz-animation-delay: .35s;
+    -o-animation-delay: .35s;
+    animation-delay: .35s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(2) {
+    -webkit-animation: fadeInRight .5s ease forwards;
+    -moz-animation: fadeInRight .5s ease forwards;
+    -o-animation: fadeInRight .5s ease forwards;
+    animation: fadeInRight .5s ease forwards;    
+    -webkit-animation-delay: .45s;
+    -moz-animation-delay: .45s;
+    -o-animation-delay: .45s;
+    animation-delay: .45s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(3) {
+    -webkit-animation: fadeInRight .5s ease forwards;
+    -moz-animation: fadeInRight .5s ease forwards;
+    -o-animation: fadeInRight .5s ease forwards;
+    animation: fadeInRight .5s ease forwards;
+    -webkit-animation-delay: .55s;
+    -moz-animation-delay: .55s;
+    -o-animation-delay: .55s;
+    animation-delay: .55s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(4) {
+    -webkit-animation: fadeInRight .5s ease forwards;
+    -moz-animation: fadeInRight .5s ease forwards;
+    -o-animation: fadeInRight .5s ease forwards;
+    animation: fadeInRight .5s ease forwards;
+    -webkit-animation-delay: .65s;
+    -moz-animation-delay: .65s;
+    -o-animation-delay: .65s;
+    animation-delay: .65s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(5) {
+    -webkit-animation: fadeInRight .5s ease forwards;
+    -moz-animation: fadeInRight .5s ease forwards;
+    -o-animation: fadeInRight .5s ease forwards;
+    animation: fadeInRight .5s ease forwards;
+    -webkit-animation-delay: .75s;
+    -moz-animation-delay: .75s;
+    -o-animation-delay: .75s;
+    animation-delay: .75s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(6) {
+    -webkit-animation-delay: .85s;
+    -moz-animation-delay: .85s;
+    -o-animation-delay: .85s;
+    animation-delay: .85s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(7) {
+    -webkit-animation-delay: .95s;
+    -moz-animation-delay: .95s;
+    -o-animation-delay: .95s;
+    animation-delay: .95s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(8) {
+    -webkit-animation-delay: .105s;
+    -moz-animation-delay: .105s;
+    -o-animation-delay: .105s;
+    animation-delay: .105s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(9) {
+    -webkit-animation-delay: .115s;
+    -moz-animation-delay: .115s;
+    -o-animation-delay: .115s;
+    animation-delay: .115s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(10) {
+    -webkit-animation-delay: .125s;
+    -moz-animation-delay: .125s;
+    -o-animation-delay: .125s;
+    animation-delay: .125s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(11) {
+    -webkit-animation-delay: .135s;
+    -moz-animation-delay: .135s;
+    -o-animation-delay: .135s;
+    animation-delay: .135s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(12) {
+    -webkit-animation-delay: .145s;
+    -moz-animation-delay: .145s;
+    -o-animation-delay: .145s;
+    animation-delay: .145s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(13) {
+    -webkit-animation-delay: .155s;
+    -moz-animation-delay: .155s;
+    -o-animation-delay: .155s;
+    animation-delay: .155s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(14) {
+    -webkit-animation-delay: .165s;
+    -moz-animation-delay: .165s;
+    -o-animation-delay: .165s;
+    animation-delay: .165s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(15) {
+    -webkit-animation-delay: .175s;
+    -moz-animation-delay: .175s;
+    -o-animation-delay: .175s;
+    animation-delay: .175s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(16) {
+    -webkit-animation-delay: .185s;
+    -moz-animation-delay: .185s;
+    -o-animation-delay: .185s;
+    animation-delay: .185s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(17) {
+    -webkit-animation-delay: .195s;
+    -moz-animation-delay: .195s;
+    -o-animation-delay: .195s;
+    animation-delay: .195s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(18) {
+    -webkit-animation-delay: .205s;
+    -moz-animation-delay: .205s;
+    -o-animation-delay: .205s;
+    animation-delay: .205s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(19) {
+    -webkit-animation-delay: .215s;
+    -moz-animation-delay: .215s;
+    -o-animation-delay: .215s;
+    animation-delay: .215s;
+}
+
+.minimalio-menu-section .minimalio-overlay.open li:nth-of-type(20) {
+    -webkit-animation-delay: .225s;
+    -moz-animation-delay: .225s;
+    -o-animation-delay: .225s;
+    animation-delay: .225s;
+}
+
+.minimalio-menu-section .minimalio-overlay nav {
+    position: relative;
+    top: 50%;
+    font-size: 50px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    text-align: center;
+    z-index: 99999;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.minimalio-menu-section .minimalio-overlay ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    height: 100%;
+}
+
+.minimalio-menu-section .minimalio-overlay ul li {
+    display: block;
+    height: calc(100% / 4);
+    min-height: 50px;
+    position: relative;
+    opacity: 0;
+}
+
+.minimalio-menu-section .minimalio-overlay ul li a {
+    display: block;
+    position: relative;
+    color: #FFF;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.minimalio-menu-section .minimalio-overlay ul li a:hover:after,
+.minimalio-overlay ul li a:focus:after,
+.minimalio-overlay ul li a:active:after {
+    width: 100%;
+}
+
+.minimalio-menu-section .minimalio-overlay ul li a:after {
+    content: '';
+    position: absolute;
+    bottom: 33%;
+    left: 50%;
+    width: 0%;
+    height: 10px;
+    z-index: -1;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    left: 20%;
+  }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    left: 20%;
+  }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+/******* End Overlay Menu ********/
+
+/* -----------------------------------------------------------------
+  3.MiniMalio - Hero Section CSS
+------------------------------------------------------------------*/
+.minimalio-hero-section{
+    height: 100vh;
+    background-image: url(http://via.placeholder.com/1600x850);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+.minimalio-indx-1 .minimalio-hero-section{
+    height: 100vh;
+    background-image: url(http://via.placeholder.com/1600x850);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.minimalio-welcome-section{
+    position: absolute;
+    text-align: left;
+    top: 50%;
+    width: 600px;
+    transform: translateY(-50%);
+}
+
+.minimalio-single-welcome-section{
+    color: #333333;
+}
+
+.minimalio-single-welcome-section h1{
+    font-size: 64px;
+}
+
+
+/*Hero Slider CSS*/
+#minimalio-hero-slide {
+    position: relative;
+}
+#minimalio-hero-slide, 
+#minimalio-hero-slide > div, 
+#minimalio-hero-slide > div > div, 
+#minimalio-hero-slide > div > div > div, 
+#minimalio-hero-slide > div > div > div > div {
+    height: 100%;
+}
+#minimalio-hero-slide .minimalio-hero-slide-item {
+    background-size: cover;
+}
+
+#minimalio-hero-slide .minimalio-hero-slide-item:before,
+.minimalio-hero-section:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255, .5);
+}
+body.minimalio-indx-1 #minimalio-hero-slide .minimalio-hero-slide-item {
+    background-position: center center
+}
+
+#minimalio-hero-slide .owl-controls {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+}
+#minimalio-hero-slide .owl-controls .owl-page {
+    background-color: #333;
+    display: inline-block;
+    height: 15px;
+    margin: 0 5px;
+    width: 15px;
+    opacity: .5;
+}
+#minimalio-hero-slide .owl-controls .owl-page.active {
+    opacity: 1;
+    cursor: default;
+}
+#minimalio-hero-slide .owl-controls.clickable .owl-page:hover span {
+
+}
+
+#minimalio-hero-slide .owl-item.active .minimalio-hero-slide-item h1 {
+  -webkit-animation: fadeInDownPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 600ms both;
+  animation: fadeInDownPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 600ms both;
+}
+#minimalio-hero-slide .owl-item.active .minimalio-hero-slide-item h2 {
+  -webkit-animation: fadeInDownPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 200ms both;
+  animation: fadeInDownPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 200ms both;
+}
+#minimalio-hero-slide .owl-item.active .minimalio-hero-slide-item p {
+  -webkit-animation: fadeInDownPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 1000ms both;
+  animation: fadeInDownPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 1000ms both;
+}
+
+#minimalio-hero-slide .owl-item.active .minimalio-hero-slide-item .hero-btn {
+  -webkit-animation: fadeInDownPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 1400ms both;
+  animation: fadeInDownPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 1400ms both;
+}
+
+
+body.minimalio-indx-2 #minimalio-hero-slide .owl-item.active .minimalio-hero-slide-item h1 {
+  -webkit-animation: fadeInRightPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 600ms both;
+  animation: fadeInRightPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 600ms both;
+}
+body.minimalio-indx-2 #minimalio-hero-slide .owl-item.active .minimalio-hero-slide-item h2 {
+  -webkit-animation: fadeInRightPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 200ms both;
+  animation: fadeInRightPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 200ms both;
+}
+body.minimalio-indx-2 #minimalio-hero-slide .owl-item.active .minimalio-hero-slide-item p {
+  -webkit-animation: fadeInRightPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 1000ms both;
+  animation: fadeInRightPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 1000ms both;
+}
+
+body.minimalio-indx-2 #minimalio-hero-slide .owl-item.active .minimalio-hero-slide-item .hero-btn {
+  -webkit-animation: fadeInRightPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 1400ms both;
+  animation: fadeInRightPix 1.2s cubic-bezier(0.7, 0, 0.3, 1) 1400ms both;
+}
+
+
+.fadeInUpPix {
+  animation-name: fadeInUpPix;
+}
+@keyframes fadeInUpPix {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInLeftPix {
+  from {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInLeftPix {
+  animation-name: fadeInLeftPix;
+}
+
+@keyframes fadeInRightPix {
+  from {
+    opacity: 0;
+    transform: translate3d(20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInRightPix {
+  animation-name: fadeInRightPix;
+}
+
+@keyframes fadeInDownPix {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInDownPix {
+  animation-name: fadeInDownPix;
+}
+
+
+
+/* -----------------------------------------------------------------
+  4.MiniMalio - Services Section CSS
+------------------------------------------------------------------*/
+.minimalio-services-section {
+    padding: 100px 0 130px;
+}
+
+.minimalio-services-menus {
+    text-align: center;
+}
+
+.minimalio-services-menus ul.minimalio-lavalamp-darrow {
+    border-bottom: 2px solid #666666;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.minimalio-services-menus ul li {
+    display: inline-block;
+}
+
+.minimalio-services-menus ul li a {
+    color: #666666;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+.minimalio-services-menus ul li a:hover {
+    color: #333333;
+}
+
+/* -----------------------------------------------------------------
+  4.1 - MiniMalio - Arrow Down in Services Section
+------------------------------------------------------------------*/
+.minimalio-arrow-down{
+    position: relative;
+}
+
+.minimalio-lavalamp-darrow li.backLava {
+    overflow: inherit !important;
+}
+
+.minimalio-lavalamp-darrow .backLava::before,
+.minimalio-lavalamp-darrow .backLava::after{
+    border: medium solid transparent;
+    content: " ";
+    height: 0;
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    top: 57px;
+    opacity: 1;
+}
+
+.minimalio-lavalamp-darrow .backLava::before {
+    border-color: #666666 rgba(194, 225, 245, 0) rgba(194, 225, 245, 0);
+    border-width: 14px;
+    margin-left: -14px;
+}
+
+.minimalio-lavalamp-darrow .backLava::after {
+    border-color: #ffffff rgba(136, 183, 213, 0) rgba(136, 183, 213, 0);
+    border-width: 12px;
+    margin-left: -12px;
+}
+
+/* -----------------------------------------------------------------
+  4.2 - MiniMalio - minimalio-services-content
+------------------------------------------------------------------*/
+.minimalio-services-content{
+    padding-top: 80px;
+    position: relative;
+}
+
+.minimalio-grid-item{
+    display: block;
+    padding: 0;
+    overflow: hidden;
+}
+
+.minimalio-img-container {
+  padding: 10px;
+}
+
+.minimalio-img-container img{
+    width: 100%;
+}
+
+.minimalio-img-text {
+    background: black none repeat scroll 0 0;
+    color: #fff;
+    height: 95%;
+    left: 10px;
+    opacity: 0;
+    position: absolute;
+    top: 10px;
+    width: 95%;
+    transition: all .4s ease;
+}
+
+.minimalio-img-text .minimalio-plus-sign {
+    font-family: "Poppins", sans-serif;
+    font-size: 60px;
+    font-weight: 100;
+    padding: 100px 0 0;
+    text-align: center;
+}
+
+.minimalio-img-text p {
+    padding: 0 0 100px;
+    text-align: center;
+}
+
+.minimalio-img-container:hover .minimalio-img-text{
+    background: #000;
+    opacity: 0.5;
+}
+
+.minimalio-grid-item-h2 .minimalio-img-text{
+    height: 97.5%;
+}
+
+.minimalio-grid-item-w2 .minimalio-img-text{
+    width: 97.5%;
+}
+
+.minimalio-grid-item-h2 .minimalio-img-text .minimalio-plus-sign{
+    padding: 290px 0 0px;
+    text-align: center;
+}
+
+.minimalio-grid-item-h2 .minimalio-img-text p{
+    padding: 0px 0 100px;
+}
+
+.minimalio-grid-item-h2 img {
+  height: 100%;
+  max-width: 100%;
+}
+
+.minimalio-grid-item-w2 img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.minimalio-load-more{
+    text-align: center;
+    padding-top: 90px;
+    
+}
+
+.minimalio-load-more a{
+    font-size: 24px;
+    color: #666666;
+    border: 1px solid #666666;
+    padding: 20px 75px;
+    display: inline-block;
+    transition: all 0.4s ;
+}
+
+.minimalio-load-more a:hover{
+    background-color: #666666;
+    color: #ffffff;
+}
+
+.minimalio-grid-item .minimalio-img-container::before {
+    background-color: #ececec;
+    content: "";
+    height: 5px;
+    left: 22px;
+    position: absolute;
+    top: 0;
+    width: calc(100% - 44px);
+}
+.minimalio-grid-item .minimalio-img-container::after {
+    background-color: #dcdcdc;
+    content: "";
+    height: 5px;
+    left: 16px;
+    position: absolute;
+    top: 5px;
+    width: calc(100% - 32px);
+}
+
+.owl-theme .owl-controls .owl-page span,
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+    opacity: 0;
+}
+
+
+
+/*new layout for index-2.html*/
+.minimalio-new-layout .minimalio-hover-overlay {
+  background: rgba(0,0,0, 0.5);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all .4s;
+}
+
+.minimalio-new-layout .minimalio-img-container:hover .minimalio-hover-overlay{
+    opacity: 1;
+}
+
+.minimalio-new-layout .minimalio-grid-item {
+  padding: 10px;
+}
+
+.minimalio-new-layout .minimalio-img-container {
+  padding: 10px;
+}
+
+.minimalio-new-layout .minimalio-img-container {
+  padding: 0;
+  position: relative;
+}
+
+.minimalio-new-layout .minimalio-hover {
+  color: #fff;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.minimalio-new-layout .minimalio-hover > span {
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 1;
+}
+
+
+/*Minimalio Equal Grid Portfolio*/
+.minimalio-equal-grid .minimalio-grid-item {
+display: inline-block;
+float: left;
+height: 250px;
+padding: 0;
+width: 33.33%;
+}
+.minimalio-equal-grid .minimalio-img-container {
+  height: 100%;
+}
+
+.minimalio-equal-grid.minimalio-grid-gutter .minimalio-grid-item {
+  margin: 1%;
+  width: 31.33%;
+}
+
+/* -----------------------------------------------------------------
+  5.MiniMalio - minimalio-quote
+------------------------------------------------------------------*/
+.minimalio-quote img {
+    background-color: #666666;
+    border: 5px solid #cccccc;
+    border-radius: 50%;
+    left: calc(50% - 27px);
+    padding: 22px;
+    position: absolute;
+    top: -5.5%;
+    width: 70px;
+    height: 70px;
+}
+
+/* -----------------------------------------------------------------
+  6.MiniMalio - CEO Section
+------------------------------------------------------------------*/
+.minimalio-ceo-section{
+    padding: 140px 0;
+    background-color: #F7F7F7;
+    position: relative;
+}
+
+.minimalio-ceo-descriptions{
+    width: 75%;
+    margin: 0 auto;
+}
+
+.minimalio-ceo-intro {
+    border: medium none;
+    margin-bottom: 40px;
+    position: relative;
+    text-align: center;
+}
+
+.minimalio-navigation {
+    position: relative;
+    z-index: 99999;
+}
+
+.minimalio-ceo-intro .minimalio-navigation .owl-controls .owl-pagination{
+    display: none;
+}
+
+.minimalio-navigation a {
+    color: #666666;
+}
+
+.minimalio-navigation i {
+    font-size: 40px;
+}
+
+.minimalio-navigation i.minimali-prev-nav {
+    left: 0%;
+    position: absolute;
+    top: 110%;
+}
+.minimalio-navigation i.minimali-next-nav {
+    position: absolute;
+    right: 0%;
+    top: 110%;
+}
+
+.minimalio-ceo-details-section{
+    text-align: center;
+}
+
+.minimalio-ceo-intro .item h2{
+    font-size: 18px;
+    color: #333333;
+    font-weight: 500;
+
+}
+
+.minimalio-ceo-intro .item h3{
+    font-size: 14px;
+    color: #666666;
+}
+
+.minimalio-ceo-details{
+    background-color: #fff;
+    border-top: 2px solid #666666;
+    box-shadow: 2px 2px 18px -10px #858585;
+    margin: 0 50px 15px;
+    padding: 50px 60px;
+    position: relative;
+}
+
+.minimalio-ceo-details:before{
+    content: "";
+    width: 2px;
+    height: 20%;
+    background: #666666;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.minimalio-ceo-details h2{
+    font-size: 18px;
+    border-bottom: 1px dotted #666666;
+    padding-bottom: 25px;
+}
+
+.minimalio-ceo-details p{
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+.minimalio-ceo-details i {
+    border: 2px solid #666666;
+    color: #b2b2b2;
+    font-size: 30px;
+    left: -25px;
+    padding: 10px;
+    position: absolute;
+    top: 45px;
+    background-color: #ffffff;
+}
+
+.minimalio-ceo-details-section .owl-pagination{
+    display: none;
+}
+
+
+/* -----------------------------------------------------------------
+  6.1 - MiniMalio - Arrow Down for CEO Section
+------------------------------------------------------------------*/
+.minimalio-ceo-arrow-down {
+    position: relative;
+}
+
+.minimalio-ceo-intro .owl-carousel .owl-wrapper .item {
+    cursor: pointer;
+}
+
+.minimalio-ceo-arrow-down::after, .minimalio-ceo-arrow-down::before {
+  border: medium solid transparent;
+  content: " ";
+  height: 0;
+  left: 50%;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: 0;
+  z-index: 9999999;
+}
+
+.minimalio-ceo-arrow-down::after {
+    border-color: #F7F7F7 rgba(136, 183, 213, 0) rgba(136, 183, 213, 0);
+    border-width: 12px;
+    margin-left: -12px;
+}
+
+.minimalio-ceo-arrow-down::before {
+  border-color: #666666 rgba(194, 225, 245, 0) rgba(194, 225, 245, 0);
+  border-width: 14px;
+  margin-left: -12px;
+}
+
+/* -----------------------------------------------------------------
+  7.MiniMalio - Hire Me Section
+------------------------------------------------------------------*/
+.minimalio-hire-me-section{
+    background-color: #FFFFFF;
+    padding: 130px 0 120px;
+    position: relative;
+}
+
+.minimalio-hire-me{
+    font-size: 30px;
+}
+
+.minimalio-hire-me h2 {
+    border-left: 2px solid #666;
+    color: #666666;
+    padding-left: 30px;
+}
+
+.minimalio-hire-me strong{
+    font-size: 88px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.minimalio-hire-me-button{
+    margin-top: 20px;
+}
+
+.minimalio-hire-me-button a{
+    background-color: #666666;
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: 500;
+    color: #ffffff;
+    padding: 35px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    transition: all .4s ease;
+}
+
+.minimalio-hire-me-button a i{
+    padding-left: 40px;
+}
+
+.minimalio-hire-me-button a:hover{
+    background-color: #333333;
+    color: #ffffff;
+}
+
+/* -----------------------------------------------------------------
+  8.MiniMalio - FOOTER CSS
+------------------------------------------------------------------*/
+.minimalio-footer-arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;  
+  border-top: 20px solid #ffffff;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 0px;
+}
+
+.minimalio-footer-section{
+    background-color: #F7F7F7;
+    padding: 110px 0 105px;
+    position: relative;
+}
+
+.minimalio-footer{
+    text-align: center;
+}
+
+.minimalio-footer-copyright{
+    color: #666666;
+    padding-bottom: 25px;
+}
+
+.minimalio-social-icons{
+    margin-bottom: 40px;
+}
+
+.minimalio-social-icons ul{
+    list-style-type: none;
+}
+
+.minimalio-social-icons ul li{
+    display: inline-block;
+}
+
+.minimalio-social-icons ul li a{
+    color: #fff;
+    background-color: #383838;
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin-right: 10px;
+    transition: all 0.4s;
+    border-radius: 50%;
+    padding: 9px;
+}
+
+.minimalio-social-icons ul li a.minimalio-icon-twitter:hover {
+    background-color: #0084b4;
+}
+.minimalio-social-icons ul li a.minimalio-icon-google-plus:hover {
+    background-color: #db4437;
+}
+.minimalio-social-icons ul li a.minimalio-icon-facebook:hover {
+    background-color: #3b5998;
+}
+.minimalio-social-icons ul li a.minimalio-icon-pinterest:hover {
+    background-color: #CD1D1F;
+}
+
+.minimalio-footer-botttom{
+    font-size: 14px;
+    color: #666666;
+}
+
+.minimalio-address, .minimalio-email, .minimalio-phone{
+    display: inline-block;
+    padding-right: 40px;
+}
+
+.minimalio-address strong, .minimalio-email strong, .minimalio-phone strong{
+    color: #333333;
+}
+
+/* -----------------------------------------------------------------
+  9.MiniMalio - About Page CSS 
+------------------------------------------------------------------*/
+.minimalio-about-ones-details{
+    padding: 95px 0 135px;
+}
+
+.minimalio-about-ones-title{
+    padding-bottom: 40px;
+}
+
+.minimalio-about-ones-title h2{
+    color: #333333;
+    font-size: 24px;
+}
+
+.minimalio-about-ones-title h3{
+    color: #666666;
+    font-size: 16px;
+}
+
+.minimalio-about-ones p{
+    color: #777777;
+}
+
+.minimalio-resume-header-title h3{
+    padding-bottom: 40px;
+}
+
+.minimalio-about-bottom-image img{
+    width: 100%;
+}
+
+/* -----------------------------------------------------------------
+  9.1 - MiniMalio - About Page CSS for Skill Progress Bar
+------------------------------------------------------------------*/
+.minimalio-skill-progress-bar-list{
+    padding-bottom: 80px;
+    padding-top: 100px;
+    overflow: hidden;
+}
+
+.minimalio-single-team-skill p,
+.minimalio-single-team-skill p span {
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+.minimalio-single-team-skill {
+    box-shadow: 0 0 3px -2px #666666;
+    margin-bottom: 20px;
+    padding: 30px;
+}
+
+.minimalio-single-team-skill p:before {
+    display: none;
+}
+
+.minimalio-single-team-skill p:after {
+    display: none;
+}
+
+.minimalio-single-team-skill > p {
+    float: left;
+    font-size: 14px;
+    font-weight: 300;
+    position: relative;
+    top: -5px;
+    width: 20%;
+}
+
+.minimalio-team-skill{
+    border-radius: 10px;
+    float: left;
+    height: 12px;
+    position: relative;
+    top: -5px;
+    width: 67%;
+}
+
+.minimalio-skill-right {
+    background: #666666 none repeat scroll 0 0;
+    height: 10px;
+    left: 0;
+    margin-top: -5px;
+    overflow: inherit !important;
+    position: relative;
+    top: 50%;
+    width: 0;
+    border-radius: 10px;
+}
+
+.minimalio-skill-percentage{
+    float: left;
+    left: 5px;
+    position: relative;
+    text-align: right;
+    top: -11px;
+    width: 11%;
+}
+
+/* -----------------------------------------------------------------
+  10.MiniMalio - Blog Page CSS 
+------------------------------------------------------------------*/
+.minimalio-blog-section{
+    padding: 75px 0 150px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.minimalio-blog-describe-section{
+    padding: 35px;
+    box-shadow: 1px 1px 10px -7px #666666;
+    margin-bottom: 45px;
+}
+
+.minimalio-blog-img{
+    position: relative;
+    margin-bottom: 55px;
+}
+
+.minimalio-blog-img img{
+    width: 100%;
+}
+
+.minimalio-blog-img p{
+    position: absolute;
+    bottom: -20px;
+    left: -35px;
+    margin: 0;
+    padding: 15px 35px 10px;
+    background: #ffffff;
+    font-weight: 500;
+    transition: all .4s;
+}
+
+.minimalio-blog-img p:hover{
+   background-color: #C2C2C2;
+   color: #333333;
+}
+
+.minimalio-blog-content{
+    padding-bottom: 40px;
+}
+
+.minimalio-blog-content h2{
+    font-size: 24px;
+    font-weight: 100;
+    margin-bottom: 30px;
+    color: #333333;
+}
+
+.minimalio-blog-comments ul li{
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.minimalio-blog-comments ul li a{
+    color: #666666;
+    font-size: 24px;
+}
+
+.minimalio-blog-readmore{
+    text-align: right;
+}
+
+.minimalio-blog-readmore a{
+    color: #666666;
+    padding: 15px 25px;
+    border: 2px solid #D0D1D0;
+    transition: all .4s;
+}
+
+.minimalio-blog-readmore a:hover{
+    color: #ffffff;
+    background-color: #666666;
+    border: 2px solid #666666;
+}
+
+/* -----------------------------------------------------------------
+  10.1 - MiniMalio - Blog Page CSS for Pagination Section
+------------------------------------------------------------------*/
+.minimalio-blog-pagination-section{
+    text-align: right;
+    margin: 100px 70px 0 0;
+}
+
+.minimalio-blog-pagination ul li{
+    display: inline-block;
+    padding-right: 15px;
+}
+
+.minimalio-blog-pagination ul li a{
+    border: 2px solid #C1C1C1;
+    padding: 12px;
+    color: #333333;
+    transition: all .4s;
+}
+
+.minimalio-blog-pagination ul li:first-child a{
+    padding: 12px 14px;
+}
+
+.minimalio-blog-pagination ul li a:hover{
+    background-color: #666666;
+    color: #ffffff;
+    border: 2px solid #666666;
+}
+
+.minimalio-blog-pagination ul a i{
+    padding: 0 5px;
+    font-size: 18px;
+}
+
+/* -----------------------------------------------------------------
+  10.2 - MiniMalio - Blog Page CSS for sidebar-section
+------------------------------------------------------------------*/
+.minimalio-blog-sidebar-section{
+    color: #666666;
+}
+
+.minimalio-blog-searchbox{
+    display: inline-block;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.minimalio-blog-searchbox input {
+    border: medium none;
+    box-shadow: 0 0 10px -7px #666666;
+    float: left;
+    padding: 20px 25px;
+    width: calc(100% - 61px);
+}
+.minimalio-blog-searchbox input::placeholder {
+    color: #666666;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 600;
+}
+
+.minimalio-blog-searchbox i {
+    border: 2px solid #d6d6d6;
+    box-sizing: border-box;
+    float: left;
+    font-size: 16px;
+    padding: 21px;
+}
+
+.minimalio-blog-catagories{
+    padding: 40px 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px -7px #666666;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.minimalio-blog-catagories h3{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.minimalio-blog-tags h3,
+.minimalio-blog-catagories h3{
+    color: #333333;
+}
+
+.minimalio-blog-catagories ul{
+    border-left: 2px solid #666666;
+    margin-top: 30px;
+}
+
+.minimalio-blog-catagories li {
+    padding: 12px 30px;
+}
+
+.minimalio-blog-catagories li a{
+    color: #333333;
+}
+
+.minimalio-blog-tags{
+    padding: 40px 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px -7px #666666;
+    color: #666666;
+    font-size: 14px;
+}
+
+/* -----------------------------------------------------------------
+  10.3 - MiniMalio - minimalio-arrow-right in Blog Catagories
+------------------------------------------------------------------*/
+.minimalio-blog-catagories li{
+    transition: all 0.6s;
+    position: relative;
+}
+
+.minimalio-lavalamp-rarrow li.backLava {
+    overflow: inherit !important;
+}
+
+.minimalio-lavalamp-rarrow .backLava:before,
+.minimalio-lavalamp-rarrow .backLava:after{
+    border: medium solid transparent;
+    content: " ";
+    height: 0;
+    left: -2px;
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    top: 50%;
+}
+
+.minimalio-lavalamp-rarrow .backLava:before{
+    border-color: rgba(194, 225, 245, 0) rgba(194, 225, 245, 0) rgba(194, 225, 245, 0) #666666;
+    border-width: 15px;
+    margin-top: -16px;
+}
+
+.minimalio-lavalamp-rarrow .backLava:after{
+    border-color: rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) #ffffff;
+    border-width: 12px;
+    margin-top: -13px;
+}
+
+
+.minimalio-blog-tags li {
+    border: 1px solid #666666;
+    display: inline-block;
+    margin: 5px 6px 5px 0;
+}
+
+.minimalio-blog-tags li a {
+    color: #666666;
+    display: inline-block;
+    padding: 15px 35px;
+    transition: all .4s;
+}
+
+.minimalio-blog-tags li a:hover{
+    background-color: #666666;
+    color: #ffffff;
+}
+
+/* -----------------------------------------------------------------
+  11.MiniMalio - Single Blog Page CSS
+------------------------------------------------------------------*/
+.minimalio-single-blog-headNdate{
+    position: relative;
+}
+
+.minimalio-single-blog-headNdate h1{
+    font-size: 48px;
+    color: #333333;
+    font-weight: 100;
+    margin: 60px 0 25px;
+}
+
+.minimalio-single-blog-headNdate p{
+    background-color: #c2c2c2;
+    color: #333333;
+    bottom: 20px;
+    font-weight: 600;
+    right: -35px;
+    margin: 0;
+    padding: 15px 35px 10px;
+    position: absolute;
+    transition: all 0.4s ease 0s;
+}
+
+/* -----------------------------------------------------------------
+  11.1 - MiniMalio - Single Blog Page for Arrow Right CSS
+------------------------------------------------------------------*/
+.minimalio-arrow-right {
+    position: relative;
+}
+
+.minimalio-arrow-right::after,
+.minimalio-arrow-right::before{
+    border: medium solid transparent;
+    content: " ";
+    height: 0;
+    left: -2px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    width: 0;
+}
+
+.minimalio-arrow-right::before{
+    border-color: rgba(194, 225, 245, 0) rgba(194, 225, 245, 0) rgba(194, 225, 245, 0) #666666;
+    border-width: 15px;
+    margin-top: -16px;
+}
+
+.minimalio-arrow-right::after{
+    border-color: rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) #ffffff;
+    border-width: 12px;
+    margin-top: -13px;
+}
+
+/* --------------------------------------------------------------------------------
+  11.2 - MiniMalio - Single Blog Page for Comments, Tags, Likes and ShareOn Buttons
+----------------------------------------------------------------------------------- */
+.minimalio-single-blog-ctl{
+    margin-bottom: 50px;
+}
+
+.minimalio-single-blog-ctl ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+.minimalio-single-blog-ctl ul li a{
+    color: #666666;
+}
+
+.minimalio-single-blog-ctl ul li a i{
+    margin-right: 5px;
+}
+
+.minimalio-single-blog-content{
+    font-size: initial;
+    margin-bottom: 80px;
+}
+
+.minimalio-single-blog-content blockquote{
+    font-size: initial;
+    border: none;
+    text-align: justify;
+    padding: 0 25px;
+    margin: 45px 0 45px 50px;
+    border-left: 2px solid #666666;
+}
+
+.minimalio-single-blog-shareon h2{
+    color: #5c5c5c;
+    font-size: 36px;
+    font-weight: 100;
+    margin-bottom: 25px;
+}
+
+.minimalio-single-blog-shareon ul li{
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.minimalio-single-blog-shareon ul li:last-child{
+    margin-right: 0;
+}
+
+.minimalio-single-blog-shareon ul li a{
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+}
+
+.minimalio-single-blog-shareon ul li a i {
+  background-color: #666666;
+  display: block;
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+  text-align: center;
+  width: 50px;
+}
+
+.minimalio-single-blog-shareon ul li a i:hover {
+    background-color: #33cbfe;
+}
+
+.minimalio-single-blog-shareon ul li a span {
+  background: #ffffff none repeat scroll 0 0;
+  box-shadow: 1px 1px 20px -10px #666666;
+  box-sizing: border-box;
+  color: #666666;
+  display: block;
+  float: left;
+  line-height: 17px;
+  opacity: 1;
+  overflow: hidden;
+  padding: 17px 0;
+  text-align: center;
+  top: 0;
+  transition: all 0.4s ease 0s;
+  white-space: pre;
+  width: 0;
+}
+
+.minimalio-single-blog-shareon ul li a:hover span {
+    opacity: 1;
+    width: 140px;
+    padding: 17px 25px;
+}
+
+/* -----------------------------------------------------------------
+  12.MiniMalio - Contact Page CSS
+------------------------------------------------------------------*/
+.minimalio-contact-header-section{
+    padding-top: 3.125em;
+    min-height: 20em;    
+    background-image: url(http://via.placeholder.com/1600x330);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.minimalio-contact-header-section .row:last-child{
+    padding-top: 120px;
+}
+
+.minimalio-contact-breadcrumb ul li{
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.minimalio-contact-breadcrumb ul li a{
+    color: #212121;
+    font-size: 14px;
+    padding-right: 5px;
+    padding-top: 10px;
+}
+
+.minimalio-header-contact-heading h2{
+    font-size: 36px;
+    font-weight: 600;
+    color: #666666;
+    border-bottom: 2px solid #666666;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.minimalio-header-contact-heading h2{
+    position: relative;
+}
+
+.minimalio-header-contact-heading h2::after,
+.minimalio-header-contact-heading h2::before {
+    border: medium solid transparent;
+    content: " ";
+    height: 0;
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    top: 135%;
+    width: 0;
+    opacity: 0;
+}
+
+.minimalio-header-contact-heading h2::after,
+.minimalio-header-contact-heading h2::before {
+    top: 100%;
+    opacity: 1;
+}
+.minimalio-header-contact-heading h2::after {
+    border-color: #F5F5F5 rgba(136, 183, 213, 0) rgba(136, 183, 213, 0);
+    border-width: 15px;
+    margin-left: -15px;
+}
+
+.minimalio-header-contact-heading h2::before {
+    border-color: #666666 rgba(194, 225, 245, 0) rgba(194, 225, 245, 0);
+    border-width: 18px;
+    margin-left: -18px;
+}
+
+.minimalio-contact-details-section{
+    padding: 75px 0 170px;
+    position: relative;
+}
+
+.minimalio-contact-details{
+    text-align: justify;
+}
+
+.minimalio-contact-details p{
+    font-size: 18px;
+    padding-bottom: 50px;
+}
+
+.minimalio-contact-input-field h2{
+    font-size: 36px;
+    font-weight: 500;
+    color: #777777;
+}
+
+.minimalio-contact-input-field input[type="text"] {
+    border: medium none;
+    box-shadow: 2px 2px 10px 0 #d4d5d4, 0 4px 0 0 #d4d5d4;
+    display: inline-block;
+    float: left;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    padding: 29.7px 40px;
+    width: calc(100% - 98px);
+    margin-top: 10px;
+}
+
+.minimalio-contact-input-field input[type="submit"] {
+    background: #686868 none repeat scroll 0 0;
+    border: medium none;
+    box-shadow: 0 4px 0 #686868;
+    color: #ffffff;
+    display: inline-block;
+    font-family: 'fontawesome';
+    font-size: 50px;
+    padding: 10px 40px;
+    margin-top: 10px;
+}
+
+/* -----------------------------------------------------------------
+  12.1 - MiniMalio - Contact Page CSS for Minimal Contact Form
+------------------------------------------------------------------*/
+.minimalio-form-next-button{
+    bottom: 101px;
+    height: 100px;
+    width: 95px;
+    right: -5px;
+}
+
+.minimalio-form-next-button::after {
+    background: #686868 none repeat scroll 0 0;
+    color: #ffffff;
+    content: "\f105";
+    font-family: "fontawesome";
+    line-height: 100px;
+    font-size: 60px;
+}
+
+.minimalio-final-message {
+  color: #777777;
+}
+
+.minimalio-form-questions li,
+.minimalio-form-next-button.show,
+.show {
+    z-index: 0 !important;
+  }
+
+.minimalio-form-questions input{
+    border: medium none;
+    box-shadow: 1px 1px 8px -5px #666666;
+    height: 95px;
+    opacity: 0;
+    width: calc(100% - 0px);
+    margin: 0;
+    font-size: 25px;
+}
+
+.minimalio-simform ol::before {
+  background-color: #fff;
+}
+
+.questions li.current > span label, .no-js .questions li > span label {
+  transform: translateY(0px);
+  transition: none 0s ease 0s ;
+  color: #777777;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.minimalio-progress-bar{
+    border-top-right-radius: 60px;
+    position: relative;
+}
+
+.minimalio-simform .minimalio-progress-bar{
+    overflow: inherit;
+    background-color: #666;
+}
+
+.minimalio-simform .minimalio-progress-bar.minmalio-show-progress-bar:after{
+    bottom: 0;
+    right: -4px;
+    border: solid transparent;
+    content: " ";
+    height: 0px;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.minimalio-simform .minimalio-progress-bar.minmalio-show-progress-bar:after{
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: #666666;
+    border-width: 20px;
+}
+
+.minimalio-controls{
+    background-color: #D3D4D3;
+}
+
+#minimalio-map-section{
+    width: 100%;
+    height: 400px;
+}
+
+
+/*Magnific zoom CSS*/
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+    opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+    opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container,
+.mfp-with-zoom.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
+/*Magnific Fade Effect Css*/
+/* overlay at start */
+.mfp-fade.mfp-bg {
+  opacity: 0;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+}
+/* overlay animate in */
+.mfp-fade.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+/* overlay animate out */
+.mfp-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+/* content at start */
+.mfp-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+}
+/* content animate it */
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+/* content animate out */
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}
+
+
+/*minimalio new layout css*/
+.minimalio-indx-2 .minimalio-hero-section{
+    height: 100vh;
+    background-image: url(http://via.placeholder.com/1600x850);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.minimalio-indx-3 .minimalio-hero-section{
+    height: 100vh;
+    background-image: url(http://via.placeholder.com/1600x850);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+.minimalio-indx-3 .minimalio-welcome-section,
+.minimalio-indx-1 .minimalio-welcome-section {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 90%;
+}
+.minimalio-indx-1 .minimalio-single-welcome-section h1,
+.minimalio-indx-2 .minimalio-single-welcome-section h1,
+.minimalio-indx-3 .minimalio-single-welcome-section h1{
+    margin: 0;
+    text-transform: uppercase;
+    margin: 20px 0 15px;
+    line-height: 1;
+}
+
+.minimalio-indx-3 .minimalio-single-welcome-section h1{
+    font-weight: 600;
+}
+.minimalio-indx-3 .minimalio-single-welcome-section h1 span{
+    font-weight: 300;
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.minimalio-indx-1 .minimalio-single-welcome-section h2
+.minimalio-indx-2 .minimalio-single-welcome-section h2,
+.minimalio-indx-3 .minimalio-single-welcome-section h2{
+    margin: 0;
+    font-size: 34px;
+}
+
+.minimalio-indx-1 .minimalio-single-welcome-section p,
+.minimalio-indx-2 .minimalio-single-welcome-section p,
+.minimalio-indx-3 .minimalio-single-welcome-section p{
+    font-size: 24px;
+    color: #777777;
+}
+.minimalio-indx-3 .minimalio-single-welcome-section p span{
+    font-weight: 600;
+    color: #000000;
+}
+.minimalio-indx-1 .minimalio-single-welcome-section a,
+.minimalio-indx-2 .minimalio-single-welcome-section a,
+.minimalio-indx-3 .minimalio-single-welcome-section a{
+    padding: 15px 50px;
+    background-color: #333333;
+    border: 0px solid;
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 20px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/*minimalio-counting-section css*/
+.minimalio-counting-section{
+    padding: 100px 0;
+    background-color: #f7f7f7;
+}
+
+/*minimalio-my-latest-blog css*/
+.minimalio-my-latest-blog{
+    padding: 100px 0;
+    background-color: #fff;
+}
+.minimalio-latest-blog-title {
+    margin: 0 auto 80px;
+    text-align: center;
+    width: 600px;
+}
+.minimalio-latest-blog-button > button {
+    background: #666666 none repeat scroll 0 0;
+    border: 0 solid;
+    border-radius: 3px;
+    color: #ffffff;
+    display: inline-block;
+    margin-top: 25px;
+    padding: 2px 15px;
+}
+.minimalio-latest-blog-meta > ul {
+    list-style: outside none none;
+}
+.minimalio-latest-blog-meta li {
+    color: #999999;
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-transform: uppercase;
+}
+.minimalio-latest-blog-meta a {
+    color: #999999;
+    text-decoration: none;
+}
+.minimalio-latest-blog-meta ul li a i.fa {
+    margin-right: 3px;
+}
+.minimalio-latest-blog-content > h3 {
+    color: #333333;
+    font-size: 18px;
+    font-weight: 300;
+}
+.minimalio-latest-blog-content > p {
+    color: #999999;
+    font-size: 15px;
+}
+.minimalio-latest-blog-readmore > a {
+    color: #333333;
+    font-weight: 500;
+}
+.minimalio-latest-blog-readmore {
+    padding-top: 10px;
+}
+.minimalio-latest-blog-readmore .ion-ios-arrow-thin-right {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  margin-left: 10px;
+}
+
+.minimalio-counting-single i {
+  background: #000 none repeat scroll 0 0;
+  border-radius: 100%;
+  color: #fff;
+  display: inline-block;
+  float: left;
+  font-size: 25px;
+  height: 60px;
+  padding: 15px 20px;
+  width: 60px;
+}
+.minimalio-counting-number-text > strong {
+    color: #333333;
+    display: block;
+    font-size: 28px;
+    font-weight: 500;
+}
+.minimalio-counting-number-text {
+    float: left;
+    margin-left: 20px;
+    margin-top: -5px;
+}
+.minimalio-counting-number-text > span {
+    font-size: 13px;
+}
+
+.minimalio-counting-number-with-dollar-sign {
+    font-size: 28px;
+}
+
+.minimalio-counting-number-with-dollar-sign strong {
+    font-weight: 500;
+    margin-left: -8px;
+}
+.minimalio-grid-item .minimalio-img-container.minimalio-new-service-item::before,
+.minimalio-grid-item .minimalio-img-container.minimalio-new-service-item::after{
+    display: none;
+}
+
+.minimalio-load-more-2 {
+  padding-top: 90px;
+  text-align: center;
+  clear: both;
+}
+
+.minimalio-load-more-2 a {
+  background: #333333 none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  font-size: 18px;
+  padding: 15px 40px;
+  text-transform: uppercase;
+  transition: all 0.4s ease 0s;
+}
+
