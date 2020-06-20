@@ -1,11 +1,28 @@
 FROM php:7.3.3-cli
 
-RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client \
-    && docker-php-ext-install pdo_mysql pcntl \
+RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client git wget unzip libzip-dev zip \
+    && docker-php-ext-install pdo_mysql pcntl zip \
     && pecl install xdebug-2.7.0 \
     && docker-php-ext-enable xdebug \
     && curl -sS https://getcomposer.org/installer |php \
-    && mv composer.phar /usr/local/bin/composer \
-    && git
+    && mv composer.phar /usr/local/bin/composer
+
+###chrome headless
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+#install chrome driver
+RUN wget https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip \
+    && unzip chromedriver_linux64.zip \
+    && mv chromedriver /usr/bin/chromedriver \
+    && chmod 755 /usr/bin/chromedriver
+
+# configure chrome
+ENV PANTHER_NO_SANDBOX 1
+ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
+ENV PANTHER_CHROME_DRIVER_BINARY /usr/bin/chromedriver
+###chrome headless
 
 WORKDIR /var/www

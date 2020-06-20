@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServiceTable extends Migration
+class CreatedCustomerFilter extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('service', function (Blueprint $table) {
+        Schema::create('customer_filter', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('image');
-            $table->text('description');
-            $table->integer('price');
+            $table->string('filter_url');
+            $table->string('filter_title')->nullable();
+            $table->string('spot_type');
+            $table->text('title')->nullable();
+            $table->boolean('enabled');
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
-
     }
 
     /**
@@ -32,6 +34,6 @@ class CreateServiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service');
+        Schema::dropIfExists('customer_filter');
     }
 }

@@ -7,6 +7,11 @@ services:
     volumes:
       - ./:/var/www
       - ./docker/nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - php-fpm
+      - php-cli
+      - mysql
+      - redis
   php-fpm:
     build:
       context: ./
