@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Class CustomerFilter
  * @package App\Eloquent
+ * @property integer $id
  * @property string $filter_url
  * @property string $filter_title
  * @property string $spot_type
@@ -18,18 +19,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property integer $user_id
  * @property string $created_at
  * @property string $updated_at
+ * @property string $schedule
+ * @property Customer $customer
+ * @property CustomerItem $items
  */
 class CustomerFilter extends Model
 {
+
+    public const SCHEDULERS = ['1 day', '1 week', '1 hour', '6 hours', '12 hours'];
     protected $table = 'customer_filter';
-    protected $fillable = ['filter_url', 'filter_title', 'spot_type', 'title', 'enabled', 'user_id'];
+    protected $fillable = ['filter_url', 'filter_title', 'spot_type', 'title', 'enabled', 'schedule', 'user_id'];
 
     /**
      * @return BelongsTo
      */
-    public function user(): BelongsTo
+    public function customer(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 
     /**

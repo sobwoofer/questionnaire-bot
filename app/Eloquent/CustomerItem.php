@@ -2,11 +2,10 @@
 
 namespace App\Eloquent;
 
-use App\User;
-use Eloquent;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class CustomerFilter
@@ -18,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property integer $filter_id
  * @property string $created_at
  * @property string $updated_at
+ * @property CustomerFilter $filter
+ * @method betweenDatesByFilterId(int $filterId, Carbon $dateFrom, Carbon $dateTo): Builder
  */
 class CustomerItem extends Model
 {
@@ -30,6 +31,25 @@ class CustomerItem extends Model
     public function filter(): BelongsTo
     {
         return $this->belongsTo(CustomerFilter::class);
+    }
+
+    /**
+     * @param Builder $query
+     * @param int $filterId
+     * @param Carbon $dateFrom
+     * @param Carbon $dateTo
+     * @return Builder
+     */
+    public function scopeBetweenDatesByFilterId(
+        Builder $query,
+        int $filterId,
+        Carbon $dateFrom,
+        Carbon $dateTo
+    ): Builder
+    {
+        return $query
+            ->whereBetween('created_at', [$dateFrom->toDateTimeString(), $dateTo->toDateTimeString()])
+            ->where('filter_id', $filterId);
     }
 
 }

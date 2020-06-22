@@ -2,17 +2,18 @@
 
 namespace App\Console\Commands;
 
-use App\User;
 use Illuminate\Console\Command;
+use Telegram\Bot\Api;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
-class CreateUser extends Command
+class Test extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:user';
+    protected $signature = 'test';
 
     /**
      * The console command description.
@@ -38,10 +39,13 @@ class CreateUser extends Command
      */
     public function handle()
     {
-        $user = new User;
-        $user->name = 'admin';
-        $user->email = 'sobwoofer8@gmail.com';
-        $user->password = bcrypt('80977207700');
-        $user->save();
+//        $telegram = new Api('652236963:AAH3cyoQASEhyuaeao-MAWjbKZCmsjK1Czk');
+//        $me = $telegram->getMe();
+
+        $response = Telegram::getMe();
+
+        $botId = $response->getId();
+        $firstName = $response->getFirstName();
+        $username = $response->getUsername();
     }
 }

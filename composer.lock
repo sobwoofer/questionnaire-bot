@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc82efa8fb81df58c43c94faa17e21aa",
+    "content-hash": "791e523382b48e1e766fe646a482226b",
     "packages": [
         {
             "name": "code16/sharp",

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatedCustomerCredTable extends Migration
+class CreatedCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreatedCustomerCredTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_cred', function (Blueprint $table) {
+        Schema::create('customer', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('login');
-            $table->string('password');
-            $table->string('spot_type');
-            $table->text('description')->nullable();
-            $table->bigInteger('customer_id')->unsigned()->index();
-            $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade');
+            $table->string('phone')->nullable();
+            $table->string('telegram_id');
+            $table->string('username');
+            $table->bigInteger('user_id')->unsigned()->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
