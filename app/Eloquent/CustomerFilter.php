@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $filter_url
  * @property string $filter_title
  * @property string $spot_type
+ * @property int $customer_id
  * @property string $title
  * @property boolean $enabled
  * @property integer $user_id
@@ -27,6 +28,10 @@ class CustomerFilter extends Model
 {
 
     public const SCHEDULERS = ['1 day', '1 week', '1 hour', '6 hours', '12 hours'];
+    public const SPOT_IAAI = 'www.iaai.com';
+    public const SPOT_OLX = 'olx.ua';
+    public const SPOT_AUTORIA = 'auto.ria.com';
+
     protected $table = 'customer_filter';
     protected $fillable = ['filter_url', 'filter_title', 'spot_type', 'title', 'enabled', 'schedule', 'user_id'];
 

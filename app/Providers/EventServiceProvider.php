@@ -2,10 +2,25 @@
 
 namespace App\Providers;
 
+use App\Events\FreshItemsFound;
+use App\Events\States\AddFilter;
+use App\Events\States\Hunting;
+use App\Events\States\RemoveFilter;
+use App\Events\States\RunFilter;
+use App\Events\States\ShowFilters;
+use App\Events\States\Start;
+use App\Events\States\StopFilter;
+use App\Listeners\FreshItemsFoundListener;
+use App\Listeners\States\AddFilterListener;
+use App\Listeners\States\HuntingListener;
+use App\Listeners\States\RemoveFilterListener;
+use App\Listeners\States\RunFilterListener;
+use App\Listeners\States\ShowFiltersListener;
+use App\Listeners\States\StartListener;
+use App\Listeners\States\StopFilterListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +33,14 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        Start::class => [StartListener::class],
+        AddFilter::class => [AddFilterListener::class],
+        Hunting::class => [HuntingListener::class],
+        RemoveFilter::class => [RemoveFilterListener::class],
+        RunFilter::class => [RunFilterListener::class],
+        ShowFilters::class => [ShowFiltersListener::class],
+        StopFilter::class => [StopFilterListener::class],
+        FreshItemsFound::class => [FreshItemsFoundListener::class]
     ];
 
     /**

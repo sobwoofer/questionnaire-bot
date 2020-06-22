@@ -45,8 +45,9 @@ class CheckItemUpdates extends Command
 
         /** @var CustomerFilter $filter */
         foreach ($filters as $filter) {
-            $newLinks = $this->getFreshCreatedItems($filter->id, $filter->schedule);
-            event(new FreshItemsFound($newLinks, $filter));
+            if ($newLinks = $this->getFreshCreatedItems($filter->id, $filter->schedule)) {
+                event(new FreshItemsFound($newLinks, $filter));
+            }
         }
     }
 

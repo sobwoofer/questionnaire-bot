@@ -44,13 +44,13 @@ class GetFilteredItems extends Command
         /** @var CustomerFilter $filter */
         foreach ($filters as $filter) {
             switch ($filter->spot_type) {
-                case 'iaai':
+                case CustomerFilter::SPOT_IAAI:
                     $items = $this->checkFilterIaai($filter);
                     break;
-                case 'olx':
+                case CustomerFilter::SPOT_OLX:
                     $items = $this->checkFilterOlx($filter);
                     break;
-                case 'autoria':
+                case CustomerFilter::SPOT_AUTORIA:
                     $items = $this->checkFilterAutoria($filter);
                     break;
             }
