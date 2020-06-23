@@ -29,7 +29,7 @@ class CustomerFilter extends Model
 
     public const SCHEDULERS = ['1 day', '1 week', '1 hour', '6 hours', '12 hours'];
     public const SPOT_IAAI = 'www.iaai.com';
-    public const SPOT_OLX = 'olx.ua';
+    public const SPOT_OLX = 'www.olx.ua';
     public const SPOT_AUTORIA = 'auto.ria.com';
 
     protected $table = 'customer_filter';
