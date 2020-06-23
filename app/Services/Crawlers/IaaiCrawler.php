@@ -25,6 +25,16 @@ class IaaiCrawler
             $items = $this->crawlByBrowser($filterUrl, $filter->customer->id);
         }
 
+        if ($filter->filter_title) {
+            $filteredItems = [];
+            foreach ($items as $item) {
+                if (stripos($item['title'], $filter->filter_title) !== false) {
+                    $filteredItems[] = $item;
+                }
+            }
+            return $filteredItems;
+        }
+
         return $items;
     }
 
@@ -36,11 +46,18 @@ class IaaiCrawler
     public function crawlByCurl(string $filterUrl): array
     {
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', $filterUrl);
+        $headers = [
+            'User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/83.0.4103.61 Chrome/83.0.4103.61 Safari/537.36',
+        ];
+        $params = [
+            'proxy' => 'http://Selsobwoofer8:S4y9OqT@176.114.10.148:45785',
+            'headers' => $headers
+        ];
+        $response = $client->request('GET', $filterUrl, $params);
 
         $code = $response->getStatusCode(); // 200
         $header = $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
-        $body = (string)$response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
+        $body = (string)$response->getBody();
 
         $crawler = new Crawler();
         $crawler->addHtmlContent($body);

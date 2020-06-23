@@ -16,7 +16,8 @@
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
         "symfony/dom-crawler": "^4.3",
-        "symfony/panther": "^0.7.1"
+        "symfony/panther": "^0.7.1",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

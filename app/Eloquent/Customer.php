@@ -28,13 +28,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Customer extends Model
 {
-    public const START_STATE = 'start';
-    public const ADD_FILTER_STATE = 'addFilter';
-    public const HUNTING_STATE = 'hunting';
-    public const REMOVE_FILTER_STATE = 'removeFilter';
-    public const RUN_FILTER_STATE = 'runFilter';
-    public const SHOW_FILTERS_STATE = 'showFilters';
-    public const STOP_FILTER_STATE = 'showFilters';
+    public const STATE_START = 'start';
+    public const STATE_ADD_FILTER = 'addFilter';
+    public const STATE_HUNTING = 'hunting';
+    public const STATE_REMOVE_FILTER = 'removeFilter';
+    public const STATE_RUN_FILTER = 'runFilter';
+    public const STATE_SHOW_FILTERS = 'showFilters';
+    public const STATE_STOP_FILTER = 'showFilters';
 
     protected $table = 'customer';
     protected $fillable = ['phone', 'chat_id', 'state', 'username', 'update_id', 'first_name', 'last_name', 'user_id'];

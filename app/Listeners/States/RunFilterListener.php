@@ -8,6 +8,8 @@ namespace App\Listeners\States;
  */
 class RunFilterListener
 {
+    public const ACTION = 'Run Filter';
+
     public function handle($event)
     {
 

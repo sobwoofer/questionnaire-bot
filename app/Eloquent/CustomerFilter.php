@@ -48,6 +48,6 @@ class CustomerFilter extends Model
      */
     public function items(): HasMany
     {
-        return $this->hasMany(CustomerItem::class);
+        return $this->hasMany(CustomerItem::class, 'filter_id', 'id');
     }
 }

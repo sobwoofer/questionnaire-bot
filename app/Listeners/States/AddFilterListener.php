@@ -14,24 +14,42 @@ use Telegram\Bot\Objects\Chat;
  */
 class AddFilterListener
 {
+    public const ACTION = 'Add Filter';
+
     /**
      * @param AddFilter $event
      * @throws \Telegram\Bot\Exceptions\TelegramSDKException
      */
-    public function handle(AddFilter $event): void
+    public function handle($event): void
     {
         $message = $event->update->getMessage();
         $event->telegramApiClient->sendChatAction(['chat_id' => $message->getChat()->getId(), 'action' => 'typing']);
 
-        if (($spotType = $this->whichUrl($message->getText())) && $this->isUrlValid($message->getText())) {
+        if ($message->getText() === self::ACTION) {
+            $this->proposeSendFilterUrl($event->telegramApiClient, $message->getChat());
+            $event->customer->setState(Customer::STATE_ADD_FILTER);
+        } elseif(($spotType = $this->whichUrl($message->getText())) && $this->isUrlValid($message->getText())) {
             $this->addCustomerFilter($message->getText(), $spotType, $event->customer->id);
             $this->sayUrlSuccessAdded($event->telegramApiClient, $message->getChat(), $spotType);
-            $event->customer->setState(Customer::HUNTING_STATE);
+            $event->customer->setState(Customer::STATE_HUNTING);
         } else {
             $this->sayUrlNotValid($event->telegramApiClient, $message->getChat());
         }
 
         $event->customer->setUpdateId($event->update->getUpdateId());
+    }
+
+    /**
+     * @param Api $client
+     * @param Chat $chat
+     * @param string $messageText
+     */
+    private function proposeSendFilterUrl(Api $client, Chat $chat, string $messageText = null): void
+    {
+        $client->sendMessage([
+            'chat_id' => $chat->getId(),
+            'text' => $messageText ?: 'Grade :) send me please url with products which i will hunt',
+        ]);
     }
 
     /**

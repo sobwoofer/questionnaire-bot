@@ -4,15 +4,19 @@ namespace App\Providers;
 
 use App\Events\FreshItemsFound;
 use App\Events\States\AddFilter;
+use App\Events\FirstFilterCrawled;
 use App\Events\States\Hunting;
+use App\Events\States\Info;
 use App\Events\States\RemoveFilter;
 use App\Events\States\RunFilter;
 use App\Events\States\ShowFilters;
 use App\Events\States\Start;
 use App\Events\States\StopFilter;
+use App\Listeners\FirstFilterCrawledListener;
 use App\Listeners\FreshItemsFoundListener;
 use App\Listeners\States\AddFilterListener;
 use App\Listeners\States\HuntingListener;
+use App\Listeners\States\InfoListener;
 use App\Listeners\States\RemoveFilterListener;
 use App\Listeners\States\RunFilterListener;
 use App\Listeners\States\ShowFiltersListener;
@@ -22,6 +26,10 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
+/**
+ * Class EventServiceProvider
+ * @package App\Providers
+ */
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -40,7 +48,9 @@ class EventServiceProvider extends ServiceProvider
         RunFilter::class => [RunFilterListener::class],
         ShowFilters::class => [ShowFiltersListener::class],
         StopFilter::class => [StopFilterListener::class],
-        FreshItemsFound::class => [FreshItemsFoundListener::class]
+        FreshItemsFound::class => [FreshItemsFoundListener::class],
+        Info::class => [InfoListener::class],
+        FirstFilterCrawled::class => [FirstFilterCrawledListener::class]
     ];
 
     /**
