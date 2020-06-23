@@ -3,37 +3,35 @@
 namespace App\Listeners;
 
 use App\Events\FreshItemsFound;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Telegram\Bot\Api;
 
+/**
+ * Class FreshItemsFoundListener
+ * @package App\Listeners
+ * @property Api $telegram
+ */
 class FreshItemsFoundListener
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $telegram;
+
+    public function __construct(Api $telegram)
     {
-        //
+        $this->telegram = $telegram;
     }
 
     /**
      * @param FreshItemsFound $event
-     * @return string
      * @throws \Telegram\Bot\Exceptions\TelegramSDKException
      */
     public function handle(FreshItemsFound $event)
     {
-        $telegramApiClient = new Api('652236963:AAH3cyoQASEhyuaeao-MAWjbKZCmsjK1Czk');
-
         $message = 'I found new ' . count($event->links) . ' products for you' . PHP_EOL;
 
         foreach ($event->links as $link) {
             $message .= $link . PHP_EOL;
         }
-        $telegramApiClient->sendMessage([
+
+        $this->telegram->sendMessage([
             'chat_id' => $event->filter->customer->chat_id,
             'text' => $message,
         ]);

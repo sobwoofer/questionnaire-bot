@@ -19,9 +19,12 @@ use App\Listeners\States\StopFilterListener;
 use Illuminate\Console\Command;
 use App\Events\States\Hunting;
 use Telegram\Bot\Api;
-use Telegram\Bot\Laravel\Facades\Telegram;
-use Telegram\Bot\Laravel\TelegramServiceProvider;
 
+/**
+ * Class Test
+ * @package App\Console\Commands
+ * @property Api $telegram
+ */
 class Test extends Command
 {
     /**
@@ -38,13 +41,12 @@ class Test extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $telegram;
+
+
+    public function __construct(Api $telegram)
     {
+        $this->telegram = $telegram;
         parent::__construct();
     }
 
@@ -54,8 +56,8 @@ class Test extends Command
      */
     public function handle()
     {
-        $telegramApiClient = new Api('652236963:AAH3cyoQASEhyuaeao-MAWjbKZCmsjK1Czk');
-        $updates = $telegramApiClient->getUpdates();
+        $telegramApiClient = $this->telegram;
+        $updates = $this->telegram->getUpdates();
 
         foreach ($updates as $update) {
 

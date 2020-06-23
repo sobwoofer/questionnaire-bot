@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
+        App\Providers\ProxyServiceProvider::class,
 
         /*
          * Application Service Providers...

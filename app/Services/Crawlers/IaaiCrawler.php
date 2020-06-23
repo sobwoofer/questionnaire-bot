@@ -4,11 +4,24 @@ namespace App\Services\Crawlers;
 
 use App\Eloquent\CustomerCred;
 use App\Eloquent\CustomerFilter;
+use App\Services\ProxyService;
 use Facebook\WebDriver\WebDriverBy;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * Class IaaiCrawler
+ * @package App\Services\Crawlers
+ * @property ProxyService $proxyService
+ */
 class IaaiCrawler
 {
+    private $proxyService;
+
+    public function __construct(ProxyService $proxyService)
+    {
+        $this->proxyService = $proxyService;
+    }
+
     /**
      * @param CustomerFilter $filter
      * @param bool $browser
@@ -45,18 +58,7 @@ class IaaiCrawler
      */
     public function crawlByCurl(string $filterUrl): array
     {
-        $client = new \GuzzleHttp\Client();
-        $headers = [
-            'User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/83.0.4103.61 Chrome/83.0.4103.61 Safari/537.36',
-        ];
-        $params = [
-            'proxy' => 'http://Selsobwoofer8:S4y9OqT@176.114.10.148:45785',
-            'headers' => $headers
-        ];
-        $response = $client->request('GET', $filterUrl, $params);
-
-        $code = $response->getStatusCode(); // 200
-        $header = $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
+        $response = $this->proxyService->request($filterUrl);
         $body = (string)$response->getBody();
 
         $crawler = new Crawler();

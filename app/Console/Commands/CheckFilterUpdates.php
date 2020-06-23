@@ -39,7 +39,7 @@ class CheckFilterUpdates extends Command
     /**
      * @throws \Exception
      */
-    public function handle()
+    public function handle(): void
     {
         $filters = CustomerFilter::query()->where('enabled', true)->get();
 
@@ -77,9 +77,11 @@ class CheckFilterUpdates extends Command
             . ' and previousLinkPack: ' . count($previousLinkPack));
 
         $freshLinks = [];
-        foreach ($lastLinkPack as $lastUrl) {
-            if (!in_array($lastUrl, $previousLinkPack, true)) {
-                $freshLinks[] = $lastUrl;
+        if ($previousLinkPack) {
+            foreach ($lastLinkPack as $lastUrl) {
+                if (!in_array($lastUrl, $previousLinkPack, true)) {
+                    $freshLinks[] = $lastUrl;
+                }
             }
         }
 

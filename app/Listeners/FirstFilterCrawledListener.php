@@ -8,31 +8,26 @@ use Telegram\Bot\Api;
 /**
  * Class FirstFilterCrawledListener
  * @package App\Listeners
+ * @property Api $telegram
  */
 class FirstFilterCrawledListener
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $telegram;
+
+    public function __construct(Api $telegram)
     {
-        //
+        $this->telegram = $telegram;
     }
 
     /**
      * @param FirstFilterCrawled $event
-     * @throws \Telegram\Bot\Exceptions\TelegramSDKException
      */
     public function handle(FirstFilterCrawled $event): void
     {
-        $telegramApiClient = new Api('652236963:AAH3cyoQASEhyuaeao-MAWjbKZCmsjK1Czk');
-
         $message = 'I just checked your filter ' . $event->filter->spot_type
             . ' and found ' . $event->itemsCount . ' products. I notice you when there will be new items ' . PHP_EOL;
 
-        $telegramApiClient->sendMessage([
+        $this->telegram->sendMessage([
             'chat_id' => $event->filter->customer->chat_id,
             'text' => $message,
         ]);

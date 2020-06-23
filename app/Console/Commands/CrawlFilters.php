@@ -8,29 +8,21 @@ use App\Events\FirstFilterCrawled;
 use App\Services\Crawlers\IaaiCrawler;
 use Illuminate\Console\Command;
 
+/**
+ * Class CrawlFilters
+ * @package App\Console\Commands
+ * @property IaaiCrawler $iaaiCrawler
+ */
 class CrawlFilters extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
+
     protected $signature = 'crawl-filters';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Command description';
+    private $iaaiCrawler;
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct(IaaiCrawler $iaaiCrawler)
     {
+        $this->iaaiCrawler = $iaaiCrawler;
         parent::__construct();
     }
 
@@ -46,7 +38,7 @@ class CrawlFilters extends Command
         foreach ($filters as $filter) {
             switch ($filter->spot_type) {
                 case CustomerFilter::SPOT_IAAI:
-                    $items = $this->checkFilterIaai($filter);
+                    $items = $this->iaaiCrawler->crawl($filter);
                     break;
                 case CustomerFilter::SPOT_OLX:
                     $items = $this->checkFilterOlx($filter);
@@ -72,24 +64,11 @@ class CrawlFilters extends Command
             }
 
         }
-
-
     }
 
-    /**
-     * @param CustomerFilter $filter
-     * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    private function checkFilterIaai(CustomerFilter $filter): array
-    {
-        $crawler = new IaaiCrawler();
-        return $crawler->crawl($filter);
-    }
 
     private function checkFilterOlx(CustomerFilter $filter): array
     {
-        $crawler = new IaaiCrawler();
         return [];
     }
 
