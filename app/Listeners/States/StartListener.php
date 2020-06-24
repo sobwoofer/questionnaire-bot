@@ -43,13 +43,7 @@ class StartListener
      */
     private function proposeMenu(Api $client, Chat $chat, string $messageText = null): void
     {
-        $keyboard = [[
-            AddFilterListener::ACTION,
-            ShowFiltersListener::ACTION,
-            RemoveFilterListener::ACTION,
-            StopFilterListener::ACTION,
-            'Info'
-        ]];
+        $keyboard = [[AddFilterListener::ACTION, ShowFiltersListener::ACTION, RemoveFilterListener::ACTION, 'Info']];
         $reply_markup = $client->replyKeyboardMarkup([
             'keyboard' => $keyboard,
             'resize_keyboard' => true,
@@ -58,7 +52,8 @@ class StartListener
 
         $client->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => $messageText ?: 'Hello, do you want to spy some products?',
+            'text' => $messageText ?: 'Hello, do you want to spy some products?' .
+                                    'Chose "Add Filter in menu and wait for new products"',
             'reply_markup' => $reply_markup
         ]);
     }

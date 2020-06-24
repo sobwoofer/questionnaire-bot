@@ -6,16 +6,13 @@ use App\Eloquent\Customer;
 use App\Events\States\AddFilter;
 use App\Events\States\Info;
 use App\Events\States\RemoveFilter;
-use App\Events\States\RunFilter;
 use App\Events\States\ShowFilters;
-use App\Events\States\StopFilter;
 use App\Events\States\Start;
 use App\Listeners\States\AddFilterListener;
 use App\Listeners\States\InfoListener;
 use App\Listeners\States\RemoveFilterListener;
 use App\Listeners\States\ShowFiltersListener;
 use App\Listeners\States\StartListener;
-use App\Listeners\States\StopFilterListener;
 use Illuminate\Console\Command;
 use App\Events\States\Hunting;
 use Telegram\Bot\Api;
@@ -56,6 +53,18 @@ class Test extends Command
      */
     public function handle()
     {
+        while (true) {
+            $this->runBot();
+            sleep(2);
+        }
+
+    }
+
+    /**
+     *
+     */
+    public function runBot(): void
+    {
         $telegramApiClient = $this->telegram;
         $updates = $this->telegram->getUpdates();
 
@@ -87,8 +96,6 @@ class Test extends Command
                     return;
                 case RemoveFilterListener::ACTION: event(new RemoveFilter($update, $customer, $telegramApiClient));
                     return;
-                case StopFilterListener::ACTION: event(new StopFilter($update, $customer, $telegramApiClient));
-                    return;
                 case InfoListener::ACTION: event(new Info($update, $customer, $telegramApiClient));
                     return;
             }
@@ -100,19 +107,13 @@ class Test extends Command
                     break;
                 case Customer::STATE_SHOW_FILTERS: event(new ShowFilters($update, $customer, $telegramApiClient));
                     break;
-                case Customer::STATE_RUN_FILTER: event(new RunFilter($update, $customer, $telegramApiClient));
-                    break;
                 case Customer::STATE_REMOVE_FILTER: event(new RemoveFilter($update, $customer, $telegramApiClient));
-                    break;
-                case Customer::STATE_STOP_FILTER: event(new StopFilter($update, $customer, $telegramApiClient));
                     break;
                 case Customer::STATE_HUNTING: event(new Hunting($update, $customer, $telegramApiClient));
                     break;
             }
 
         }
-
-        return ';';
     }
 
     /**

@@ -6,23 +6,28 @@ use App\Eloquent\CustomerFilter;
 use App\Eloquent\CustomerItem;
 use App\Events\FirstFilterCrawled;
 use App\Services\Crawlers\IaaiCrawler;
+use App\Services\Crawlers\OlxCrawler;
 use Illuminate\Console\Command;
 
 /**
  * Class CrawlFilters
  * @package App\Console\Commands
  * @property IaaiCrawler $iaaiCrawler
+ * @property OlxCrawler $olxCrawler
  */
 class CrawlFilters extends Command
 {
 
     protected $signature = 'crawl-filters';
     protected $description = 'Command description';
-    private $iaaiCrawler;
 
-    public function __construct(IaaiCrawler $iaaiCrawler)
+    private $iaaiCrawler;
+    private $olxCrawler;
+
+    public function __construct(IaaiCrawler $iaaiCrawler, OlxCrawler $olxCrawler)
     {
         $this->iaaiCrawler = $iaaiCrawler;
+        $this->olxCrawler = $olxCrawler;
         parent::__construct();
     }
 
@@ -41,7 +46,7 @@ class CrawlFilters extends Command
                     $items = $this->iaaiCrawler->crawl($filter);
                     break;
                 case CustomerFilter::SPOT_OLX:
-                    $items = $this->checkFilterOlx($filter);
+                    $items = $this->olxCrawler->crawl($filter);
                     break;
                 case CustomerFilter::SPOT_AUTORIA:
                     $items = $this->checkFilterAutoria($filter);
