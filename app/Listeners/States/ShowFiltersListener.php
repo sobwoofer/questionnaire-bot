@@ -14,7 +14,7 @@ use Telegram\Bot\Objects\Chat;
  */
 class ShowFiltersListener
 {
-    public const ACTION = 'Show Filters';
+    public const ACTION = 'Показать фильтры';
 
     /**
      * @param ShowFilters $event
@@ -46,13 +46,13 @@ class ShowFiltersListener
             /** @var CustomerFilter $filter */
             foreach ($filters as $filter) {
                 $statusText = $filter->enabled ? 'enabled' : 'disabled';
-                $messageText .= 'FilterId: ' . $filter->id . PHP_EOL .
-                                'Status: ' . $statusText . PHP_EOL .
+                $messageText .= 'ID: ' . $filter->id . PHP_EOL .
+                                'Статус: ' . $statusText . PHP_EOL .
                                 'Url: ' . urldecode($filter->filter_url) . PHP_EOL .
                                 '--------------------------------------' . PHP_EOL;
             }
         } else {
-            $messageText = 'Filters Not Found';
+            $messageText = 'Фильтров пока нету.';
         }
 
         $client->sendMessage([

@@ -11,10 +11,18 @@ use Telegram\Bot\Objects\Chat;
 /**
  * Class AddFilterListener
  * @package App\Listeners\States
+ * @property Api $telegram
  */
 class AddFilterListener
 {
-    public const ACTION = 'Add Filter';
+    public const ACTION = 'Добавить фильтр';
+
+    private $telegram;
+
+    public function __construct(Api $telegram)
+    {
+        $this->telegram = $telegram;
+    }
 
     /**
      * @param AddFilter $event
@@ -28,12 +36,22 @@ class AddFilterListener
         if ($message->getText() === self::ACTION) {
             $this->proposeSendFilterUrl($event->telegramApiClient, $message->getChat());
             $event->customer->setState(Customer::STATE_ADD_FILTER);
-        } elseif(($spotType = $this->whichUrl($message->getText())) && $this->isUrlValid($message->getText())) {
-            $this->addCustomerFilter($message->getText(), $spotType, $event->customer->id);
-            $this->sayUrlSuccessAdded($event->telegramApiClient, $message->getChat(), $spotType);
-            $event->customer->setState(Customer::STATE_HUNTING);
-        } else {
-            $this->sayUrlNotValid($event->telegramApiClient, $message->getChat());
+        } elseif ($event->customer->state === Customer::STATE_ADD_FILTER) {
+            if (($spotType = $this->whichUrl($message->getText())) && $this->isUrlValid($message->getText())) {
+                $this->addCustomerFilter($message->getText(), $spotType, $event->customer->id);
+                $this->proposeAddFilterTitle($message->getChat());
+                $event->customer->setState(Customer::STATE_ADD_FILTER_TITLE);
+            } else {
+                $this->sayUrlNotValid($event->telegramApiClient, $message->getChat());
+            }
+        } elseif ($event->customer->state === Customer::STATE_ADD_FILTER_TITLE) {
+            if ($filter = $this->getNewFilter($event->customer->id)) {
+                $this->addFilterTitle($message->getText(), $filter);
+                $this->sayFilterAdded($message->getChat());
+                $event->customer->setState(Customer::STATE_HUNTING);
+            } else {
+                $this->sayFilterNotFound($message->getChat());
+            }
         }
 
         $event->customer->setUpdateId($event->update->getUpdateId());
@@ -48,7 +66,26 @@ class AddFilterListener
     {
         $client->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => $messageText ?: 'Grade :) send me please url with products which i will hunt',
+            'text' => $messageText ?: 'Пришлите URL сайта с отфильтрованым товаром на который вы хотите охотиться',
+        ]);
+    }
+
+    private function proposeAddFilterTitle(Chat $chat, string $messageText = null): void
+    {
+        $this->telegram->sendMessage([
+            'chat_id' => $chat->getId(),
+            'text' => $messageText ?: 'Назовите пожалуйста ваш фильтр',
+        ]);
+    }
+
+    /**
+     * @param Chat $chat
+     */
+    private function sayFilterNotFound(Chat $chat): void
+    {
+        $this->telegram->sendMessage([
+            'chat_id' => $chat->getId(),
+            'text' => 'Не могу найти фильтр. Создайте еще раз нажав кнопку ' . Customer::STATE_ADD_FILTER,
         ]);
     }
 
@@ -61,22 +98,20 @@ class AddFilterListener
     {
         $client->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => $messageText ?: 'Sorry but seems your url is not valid. I works only with ' .
+            'text' => $messageText ?: 'Извините похоже эта ссылка мне не знакома. Я умею работать толькл из ' .
                 CustomerFilter::SPOT_AUTORIA . ', ' . CustomerFilter::SPOT_IAAI . ', ' . CustomerFilter::SPOT_OLX .
-                ' Send please one of these filter url or go back',
+                ' Отправьте пожалуйста ссылку на фильтр одну из вышеуказаных',
         ]);
     }
 
     /**
-     * @param Api $client
      * @param Chat $chat
-     * @param string $spotType
      */
-    private function sayUrlSuccessAdded(Api $client, Chat $chat, string $spotType): void
+    private function sayFilterAdded(Chat $chat): void
     {
-        $client->sendMessage([
+        $this->telegram->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => 'Congratulations, your url type is ' . $spotType . '. I will check for new products every day.',
+            'text' => 'Фильтр успешно добавлен',
         ]);
     }
 
@@ -114,25 +149,45 @@ class AddFilterListener
      * @param string $url
      * @param string $spotType
      * @param int $customerId
-     * @param string|null $filterTitle
-     * @param string|null $title
      * @return bool
      */
-    private function addCustomerFilter(
-        string $url,
-        string $spotType,
-        int $customerId,
-        string $filterTitle = null,
-        string $title = null
-    ): bool
+    private function addCustomerFilter(string $url, string $spotType, int $customerId): bool
     {
         $customerFilter = new CustomerFilter();
         $customerFilter->filter_url = urlencode($url);
         $customerFilter->spot_type = $spotType;
-        $customerFilter->filter_title = $filterTitle;
         $customerFilter->customer_id = $customerId;
-        $customerFilter->title = $title;
         $customerFilter->schedule = '1 day';
+        $customerFilter->enabled = false;
         return $customerFilter->save();
+    }
+
+    private function getNewFilter(
+        int $customerId,
+        $titleNull = true,
+        $scheduleNull = true,
+        $enabled = false
+    ): ?CustomerFilter
+    {
+        $query =  CustomerFilter::query();
+        if ($titleNull) {
+            $query->where('title', null);
+        }
+        if ($scheduleNull) {
+            $query->where('schedule', null);
+        }
+
+        /** @var CustomerFilter $filter */
+        $filter = $query->where('customer_id', $customerId)->where('enabled', $enabled)->first();
+
+        return $filter;
+    }
+
+    private function addFilterTitle(string $title, CustomerFilter $filter): bool
+    {
+        /** @var CustomerFilter $filter */
+        $filter->title = $title;
+        $filter->enabled = true;
+        return $filter->save();
     }
 }

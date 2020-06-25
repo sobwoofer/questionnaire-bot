@@ -22,14 +22,14 @@ use Telegram\Bot\Api;
  * @package App\Console\Commands
  * @property Api $telegram
  */
-class Test extends Command
+class BotLoop extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'test';
+    protected $signature = 'bot-loop';
 
     /**
      * The console command description.
@@ -39,7 +39,6 @@ class Test extends Command
     protected $description = 'Command description';
 
     private $telegram;
-
 
     public function __construct(Api $telegram)
     {
@@ -53,12 +52,10 @@ class Test extends Command
      */
     public function handle()
     {
-        $this->runBot();
-//        while (true) {
-//            $this->runBot();
-//            sleep(2);
-//        }
-
+        while (true) {
+            $this->runBot();
+            sleep(2);
+        }
     }
 
     /**

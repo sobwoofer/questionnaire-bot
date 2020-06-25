@@ -15,7 +15,7 @@ use Telegram\Bot\Objects\Chat;
  */
 class InfoListener
 {
-    public const ACTION = 'Info';
+    public const ACTION = 'Справка';
 
     /**
      * @param Info $event

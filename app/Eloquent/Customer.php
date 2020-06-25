@@ -30,11 +30,11 @@ class Customer extends Model
 {
     public const STATE_START = 'start';
     public const STATE_ADD_FILTER = 'addFilter';
+    public const STATE_ADD_FILTER_TITLE = 'addFilterTitle';
+    public const STATE_ADD_FILTER_SCHEDULE = 'addFilterSchedule';
     public const STATE_HUNTING = 'hunting';
     public const STATE_REMOVE_FILTER = 'removeFilter';
-    public const STATE_RUN_FILTER = 'runFilter';
     public const STATE_SHOW_FILTERS = 'showFilters';
-    public const STATE_STOP_FILTER = 'showFilters';
 
     protected $table = 'customer';
     protected $fillable = ['phone', 'chat_id', 'state', 'username', 'update_id', 'first_name', 'last_name', 'user_id'];

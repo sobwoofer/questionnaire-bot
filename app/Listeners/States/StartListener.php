@@ -29,7 +29,7 @@ class StartListener
             $this->proposeMenu(
                 $event->telegramApiClient,
                 $message->getChat(),
-                'Sorry dont understand you. Do you want to add filter url?'
+                'Извините не понимаю вас. Выберите что небуть из меню?'
             );
         }
 
@@ -43,7 +43,7 @@ class StartListener
      */
     private function proposeMenu(Api $client, Chat $chat, string $messageText = null): void
     {
-        $keyboard = [[AddFilterListener::ACTION, ShowFiltersListener::ACTION, RemoveFilterListener::ACTION, 'Info']];
+        $keyboard = [[AddFilterListener::ACTION, ShowFiltersListener::ACTION, RemoveFilterListener::ACTION, InfoListener::ACTION]];
         $reply_markup = $client->replyKeyboardMarkup([
             'keyboard' => $keyboard,
             'resize_keyboard' => true,
@@ -52,8 +52,8 @@ class StartListener
 
         $client->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => $messageText ?: 'Hello, do you want to spy some products?' .
-                                    'Chose "Add Filter in menu and wait for new products"',
+            'text' => $messageText ?: 'Привет, если вы хотите "охотится" за какими либо товарами - ' .
+                                    'Вам сюда. Нажмите "Добавить фильтр" в меню и ждите обновлений.',
             'reply_markup' => $reply_markup
         ]);
     }
