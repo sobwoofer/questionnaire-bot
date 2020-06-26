@@ -158,7 +158,6 @@ class AddFilterListener
         $customerFilter->filter_url = urlencode($url);
         $customerFilter->spot_type = $spotType;
         $customerFilter->customer_id = $customerId;
-        $customerFilter->schedule = '1 day';
         $customerFilter->enabled = false;
         return $customerFilter->save();
     }
@@ -174,9 +173,6 @@ class AddFilterListener
         if ($titleNull) {
             $query->where('title', null);
         }
-        if ($scheduleNull) {
-            $query->where('schedule', null);
-        }
 
         /** @var CustomerFilter $filter */
         $filter = $query->where('customer_id', $customerId)->where('enabled', $enabled)->first();
@@ -189,6 +185,7 @@ class AddFilterListener
         /** @var CustomerFilter $filter */
         $filter->title = $title;
         $filter->enabled = true;
+        $filter->schedule = '1 day';
         return $filter->save();
     }
 }
