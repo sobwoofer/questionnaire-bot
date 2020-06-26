@@ -185,7 +185,7 @@ class AddFilterListener
         /** @var CustomerFilter $filter */
         $filter->title = $title;
         $filter->enabled = true;
-        $filter->schedule = '1 day';
+        $filter->schedule = '12 hours';
         return $filter->save();
     }
 }
