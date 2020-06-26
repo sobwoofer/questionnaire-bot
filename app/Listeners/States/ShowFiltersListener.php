@@ -52,7 +52,7 @@ class ShowFiltersListener
                                 '--------------------------------------' . PHP_EOL;
             }
         } else {
-            $messageText = 'Фильтров пока нету.';
+            $messageText = 'У Вас немає покищо фільтрів.';
         }
 
         $client->sendMessage([
