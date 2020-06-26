@@ -29,7 +29,7 @@ class StartListener
             $this->proposeMenu(
                 $event->telegramApiClient,
                 $message->getChat(),
-                'Извините не понимаю вас. Выберите что небуть из меню?'
+                'Вибачте не можу зрозуміти вас. Виберіть що небуть з меню.'
             );
         }
 
@@ -52,8 +52,9 @@ class StartListener
 
         $client->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => $messageText ?: 'Привет, если вы хотите "охотится" за какими либо товарами - ' .
-                                    'Вам сюда. Нажмите "Добавить фильтр" в меню и ждите обновлений.',
+            'text' => $messageText ?: 'Привіт) хочете почати "охоту" на якийсь товар? - ' .
+                                    'Вам сюди! Натисніть ' . AddFilterListener::ACTION  . ' в меню та займайтесь ' .
+                                    'своїми справами. Я маякну коли щось знайду ;)',
             'reply_markup' => $reply_markup
         ]);
     }

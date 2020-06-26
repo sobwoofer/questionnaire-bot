@@ -20,7 +20,7 @@ class CreatedCustomerFilter extends Migration
             $table->string('spot_type');
             $table->text('title')->nullable();
             $table->boolean('enabled')->default(true);
-            $table->string('schedule')->default('1 day');
+            $table->string('schedule')->nullable();
             $table->bigInteger('customer_id')->unsigned()->index();
             $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();

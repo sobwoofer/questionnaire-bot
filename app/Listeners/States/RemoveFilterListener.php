@@ -15,7 +15,7 @@ use Telegram\Bot\Objects\Chat;
  */
 class RemoveFilterListener
 {
-    public const ACTION = 'Удалить фильтр';
+    public const ACTION = 'Видалити фильтр';
     private $telegram;
     public function __construct(Api $telegram)
     {
@@ -73,7 +73,8 @@ class RemoveFilterListener
     {
         $this->telegram->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => 'Отправьте мне ID фильтра который хотите удалить, Вы можете увидить ID шего фильтра нажав кнопку ' . ShowFiltersListener::ACTION,
+            'text' => 'Відправте мені ID фільтру який хочете видалити, ' .
+            'Ви можете подивитися ID вашого фільтру нажавши кнопку ' . ShowFiltersListener::ACTION,
         ]);
     }
 
@@ -84,8 +85,8 @@ class RemoveFilterListener
     {
         $this->telegram->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => 'Не могу найти фильтр с таким ID. ' .
-                ' Вы можете увидить ID шего фильтра нажав кнопку ' . ShowFiltersListener::ACTION,
+            'text' => 'Не можу знайти фільтр з таким ID. ' .
+                'Ви можете подивитися ID вашого фільтру нажавши кнопку ' . ShowFiltersListener::ACTION,
         ]);
     }
 
@@ -96,7 +97,7 @@ class RemoveFilterListener
     {
         $this->telegram->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => 'Фильтр удален.',
+            'text' => 'Фільтр видалений.',
         ]);
     }
 

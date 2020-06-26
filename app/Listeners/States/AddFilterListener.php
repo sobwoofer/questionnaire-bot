@@ -15,7 +15,7 @@ use Telegram\Bot\Objects\Chat;
  */
 class AddFilterListener
 {
-    public const ACTION = 'Добавить фильтр';
+    public const ACTION = 'Додати фільтр';
 
     private $telegram;
 
@@ -66,7 +66,7 @@ class AddFilterListener
     {
         $client->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => $messageText ?: 'Пришлите URL сайта с отфильтрованым товаром на который вы хотите охотиться',
+            'text' => $messageText ?: 'Пришліть URL сайту з відфільтрованим товаром на який ви хочете полювати',
         ]);
     }
 
@@ -74,7 +74,7 @@ class AddFilterListener
     {
         $this->telegram->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => $messageText ?: 'Назовите пожалуйста ваш фильтр',
+            'text' => $messageText ?: 'Давайте назвемо ваш фільтр, напишіть назву.',
         ]);
     }
 
@@ -85,7 +85,7 @@ class AddFilterListener
     {
         $this->telegram->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => 'Не могу найти фильтр. Создайте еще раз нажав кнопку ' . Customer::STATE_ADD_FILTER,
+            'text' => 'Не можу знайти фільтра. Створіть ще раз нажавши кнопку ' . Customer::STATE_ADD_FILTER,
         ]);
     }
 
@@ -98,9 +98,10 @@ class AddFilterListener
     {
         $client->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => $messageText ?: 'Извините похоже эта ссылка мне не знакома. Я умею работать толькл из ' .
-                CustomerFilter::SPOT_AUTORIA . ', ' . CustomerFilter::SPOT_IAAI . ', ' . CustomerFilter::SPOT_OLX .
-                ' Отправьте пожалуйста ссылку на фильтр одну из вышеуказаных',
+            'text' => $messageText ?: 'Вибачте, але нажаль ця ссилка не знайома для мене. Я вмію працювати тільки з ' .
+                CustomerFilter::SPOT_AUTORIA . ', ' . CustomerFilter::SPOT_IAAI . ', ' . CustomerFilter::SPOT_OLX
+                . PHP_EOL .
+                ' Відправте будь ласка ссилку на фільтр одного з вищевказаних сайтів',
         ]);
     }
 
@@ -111,7 +112,7 @@ class AddFilterListener
     {
         $this->telegram->sendMessage([
             'chat_id' => $chat->getId(),
-            'text' => 'Фильтр успешно добавлен',
+            'text' => 'Фільтр успішно доданий',
         ]);
     }
 

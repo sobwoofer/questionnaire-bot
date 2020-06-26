@@ -16,7 +16,7 @@ class CreatedCustomerTable extends Migration
         Schema::create('customer', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('chat_id');
-            $table->integer('update_id');
+            $table->integer('update_id')->nullable();
             $table->string('phone')->nullable();
             $table->string('username')->nullable();
             $table->string('first_name')->nullable();

@@ -14,7 +14,7 @@ use Telegram\Bot\Objects\Chat;
  */
 class ShowFiltersListener
 {
-    public const ACTION = 'Показать фильтры';
+    public const ACTION = 'Показати фільтри';
 
     /**
      * @param ShowFilters $event
@@ -41,8 +41,8 @@ class ShowFiltersListener
     private function sendFilters(Api $client, Chat $chat, int $customerId): void
     {
         $messageText = '';
-        if ($filters = CustomerFilter::query()->where('customer_id', $customerId)->get()) {
-
+        $filters = CustomerFilter::query()->where('customer_id', $customerId)->get();
+        if (count($filters)) {
             /** @var CustomerFilter $filter */
             foreach ($filters as $filter) {
                 $statusText = $filter->enabled ? 'enabled' : 'disabled';
