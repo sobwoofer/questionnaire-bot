@@ -1,6 +1,6 @@
 FROM php:7.3.3-cli
 
-RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client git wget unzip libzip-dev zip vim cron screen \
+RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client git wget unzip libzip-dev zip vim cron screen procps \
     && docker-php-ext-install pdo_mysql pcntl zip \
     && pecl install xdebug-2.7.0 \
     && docker-php-ext-enable xdebug \

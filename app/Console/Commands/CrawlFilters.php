@@ -8,6 +8,7 @@ use App\Events\FirstFilterCrawled;
 use App\Services\Crawlers\IaaiCrawler;
 use App\Services\Crawlers\OlxCrawler;
 use Illuminate\Console\Command;
+use Log;
 
 /**
  * Class CrawlFilters
@@ -41,7 +42,9 @@ class CrawlFilters extends Command
 
         /** @var CustomerFilter $filter */
         foreach ($filters as $filter) {
-            $this->info('crawling filter id ' . $filter->id. PHP_EOL);
+            $message = 'crawling filter id ' . $filter->id. PHP_EOL;
+            $this->info($message);
+            Log::info($message);
             switch ($filter->spot_type) {
                 case CustomerFilter::SPOT_IAAI:
                     $items = $this->iaaiCrawler->crawl($filter);
@@ -54,7 +57,11 @@ class CrawlFilters extends Command
                     break;
             }
             $itemsExistBefore = $filter->items;
-            $this->info('crawled items ' . count($items). PHP_EOL);
+
+            $message = 'crawled items ' . count($items). PHP_EOL;
+            $this->info($message);
+            Log::info($message);
+
             foreach ($items as $item) {
                 $customerItem = new CustomerItem();
                 $customerItem->image = $item['image'];
