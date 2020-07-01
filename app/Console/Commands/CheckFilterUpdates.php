@@ -42,10 +42,12 @@ class CheckFilterUpdates extends Command
     public function handle(): void
     {
         $filters = CustomerFilter::query()->where('enabled', true)->get();
-
+        $this->info('filters found ' . count($filters) . PHP_EOL);
         /** @var CustomerFilter $filter */
         foreach ($filters as $filter) {
+            $this->info('processing filter id ' . $filter->id. PHP_EOL);
             if ($newLinks = $this->getFreshCreatedItems($filter->id, $filter->schedule)) {
+                $this->info('neq links found' . count($newLinks));
                 event(new FreshItemsFound($newLinks, $filter));
             }
         }

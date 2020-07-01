@@ -41,6 +41,7 @@ class CrawlFilters extends Command
 
         /** @var CustomerFilter $filter */
         foreach ($filters as $filter) {
+            $this->info('crawling filter id ' . $filter->id. PHP_EOL);
             switch ($filter->spot_type) {
                 case CustomerFilter::SPOT_IAAI:
                     $items = $this->iaaiCrawler->crawl($filter);
@@ -53,7 +54,7 @@ class CrawlFilters extends Command
                     break;
             }
             $itemsExistBefore = $filter->items;
-
+            $this->info('crawled items ' . count($items). PHP_EOL);
             foreach ($items as $item) {
                 $customerItem = new CustomerItem();
                 $customerItem->image = $item['image'];
