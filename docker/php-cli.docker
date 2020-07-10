@@ -9,6 +9,6 @@ RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client git wget unz
 
 COPY docker/crontab /etc/cron.d/laravel-cron
 RUN crontab /etc/cron.d/laravel-cron
-#RUN chmod 0664 /etc/cron.d/laravel-cron
+RUN service cron start
 
 WORKDIR /var/www
