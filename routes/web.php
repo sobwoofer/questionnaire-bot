@@ -11,6 +11,17 @@
 |
 */
 
+use Telegram\Bot\Api;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/{token}/webhook', 'TelegramController@index');
+Route::post('/{token}/webhook', 'TelegramController@index');
+
+//Route::post('/{token}/webhook', function () {
+//    $updates = Api::getWebhookUpdates();
+//
+//    return 'ok';
+//});
