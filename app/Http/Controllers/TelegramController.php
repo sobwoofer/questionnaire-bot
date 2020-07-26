@@ -2,14 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller as BaseController;
+use App\Services\FlowService;
 use Log;
+use Telegram\Bot\Api;
 
-class TelegramController extends BaseController
+/**
+ * Class TelegramController
+ * @package App\Http\Controllers
+ * @property Api $telegram
+ * @property FlowService $flowService
+ */
+class TelegramController extends Controller
 {
-    public function index(): void
+    private $flowService;
+
+    public function __construct(Api $telegram, FlowService $flowService)
     {
-        Log::info('have a new request');
+        $this->telegram = $telegram;
+        $this->flowService = $flowService;
+    }
+
+    public function index($update): void
+    {
+
+//        $this->flowService->processUpdate($update);
+        Log::info(json_encode($update));
         $a = '';
     }
 }
