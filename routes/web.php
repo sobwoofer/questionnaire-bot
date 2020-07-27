@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{token}/webhook', 'TelegramController@index');
-Route::post('/{token}/webhook', 'TelegramController@index');
+Route::get('/webhook', 'TelegramController@index');
+Route::post('/webhook', 'TelegramController@index');
 
 //Route::post('/{token}/webhook', function () {
 //    $updates = Api::getWebhookUpdates();
