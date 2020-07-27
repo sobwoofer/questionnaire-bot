@@ -24,9 +24,9 @@ class TelegramController extends Controller
 
     public function index(): void
     {
-        $items = $this->telegram->getWebhookUpdates();
-//        $this->flowService->processUpdate($update);
-        Log::info(json_encode($items));
+        $update = $this->telegram->getWebhookUpdates();
+        $this->flowService->processUpdate($update);
+        Log::info(json_encode($update));
         $a = '';
     }
 }
