@@ -22,11 +22,11 @@ class TelegramController extends Controller
         $this->flowService = $flowService;
     }
 
-    public function index($update): void
+    public function index(): void
     {
-
+        $items = $this->telegram->getWebhookUpdates();
 //        $this->flowService->processUpdate($update);
-        Log::info(json_encode($update));
+        Log::info(json_encode($items));
         $a = '';
     }
 }
