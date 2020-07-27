@@ -47,6 +47,7 @@ class ShowFiltersListener
             foreach ($filters as $filter) {
                 $statusText = $filter->enabled ? 'enabled' : 'disabled';
                 $messageText .= 'ID: ' . $filter->id . PHP_EOL .
+                                'Фільтр: ' . $filter->title . PHP_EOL .
                                 'Статус: ' . $statusText . PHP_EOL .
                                 'Url: ' . urldecode($filter->filter_url) . PHP_EOL .
                                 '--------------------------------------' . PHP_EOL;
