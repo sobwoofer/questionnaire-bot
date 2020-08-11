@@ -42,6 +42,7 @@ class IaaiCrawler
             $filteredItems = [];
             foreach ($items as $item) {
                 if (stripos($item['title'], $filter->filter_title) !== false) {
+
                     $filteredItems[] = $item;
                 }
             }
@@ -71,13 +72,19 @@ class IaaiCrawler
         $items = $crawler->filter('.table-row')->each(function (Crawler $node, $i) {
             return [
                 'image' => $node->filter('.table-cell--img img')->attr('src'),
-                'url' => $node->filter('.heading-7 a.link')->attr('href'),
+                'url' => $this->prepareUrl($node->filter('.heading-7 a.link')->attr('href')),
                 'title' => $node->filter('.heading-7 a.link')->text(),
                 'description' => $node->filter('.table-cell--actions p')->first()->text()
             ];
         });
 
         return $items;
+    }
+
+    private function prepareUrl(string $rawUrl): string
+    {
+        $parsedUrl = parse_url($rawUrl);
+        return $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $parsedUrl['path'];
     }
 
     public function crawlByBrowser(string $filterUrl, int $customerId): array
