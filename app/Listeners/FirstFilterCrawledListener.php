@@ -24,8 +24,8 @@ class FirstFilterCrawledListener
      */
     public function handle(FirstFilterCrawled $event): void
     {
-        $message = 'I just checked your filter ' . $event->filter->spot_type
-            . ' and found ' . $event->itemsCount . ' products. I notice you when there will be new items ' . PHP_EOL;
+        $message = 'Я тільки що перевірив твій ' . $event->filter->spot_type . ' ' . $event->filter->title
+            . ' та знайшов там ' . $event->itemsCount . ' товарів. Я повідолю тебе коли там з"явиться щось нове ' . PHP_EOL;
 
         $this->telegram->sendMessage([
             'chat_id' => $event->filter->customer->chat_id,
