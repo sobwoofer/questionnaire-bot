@@ -64,6 +64,10 @@ class IaaiCrawler
         $crawler = new Crawler();
         $crawler->addHtmlContent($body);
 
+        if ($pages = $crawler->filter('.pagination .btn-page')->count()) {
+            //if pagination exists
+        }
+
         $items = $crawler->filter('.table-row')->each(function (Crawler $node, $i) {
             return [
                 'image' => $node->filter('.table-cell--img img')->attr('src'),

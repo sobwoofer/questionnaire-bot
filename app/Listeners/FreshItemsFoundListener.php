@@ -25,8 +25,8 @@ class FreshItemsFoundListener
      */
     public function handle(FreshItemsFound $event)
     {
-        $message = 'I found new ' . count($event->links) . ' products for you' . PHP_EOL;
-
+        $message = 'Знайшов для тебе нових ' . count($event->links) . ' продуктів' . PHP_EOL;
+        $message .= 'Фільтр: ' . $event->filter->title . PHP_EOL;
         foreach ($event->links as $link) {
             $message .= $link . PHP_EOL;
         }
