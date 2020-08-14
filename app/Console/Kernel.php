@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('crawl-filters')->twiceDaily(6, 18);
-        $schedule->command('check-filter-updates')->twiceDaily(5, 19);
+        $schedule->command('crawl-filters')->twiceDaily(5, 18);
+        $schedule->command('check-filter-updates')->twiceDaily(6, 19);
     }
 
     /**
