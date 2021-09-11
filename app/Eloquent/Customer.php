@@ -17,27 +17,39 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $state
  * @property string $first_name
  * @property string $last_name
+ * @property string $language
  * @property integer $update_id
  * @property integer $user_id
+ * @property integer $answer_state
  * @property User $user
- * @property CustomerFilter[] $filters
- * @property CustomerCred[] $creds
- * @property CustomerCred $cred
+ * @property CustomerAnswer[] $customerAnswers
  * @property string $created_at
  * @property string $updated_at
  */
 class Customer extends Model
 {
     public const STATE_START = 'start';
-    public const STATE_ADD_FILTER = 'addFilter';
-    public const STATE_ADD_FILTER_TITLE = 'addFilterTitle';
-    public const STATE_ADD_FILTER_SCHEDULE = 'addFilterSchedule';
-    public const STATE_HUNTING = 'hunting';
-    public const STATE_REMOVE_FILTER = 'removeFilter';
-    public const STATE_SHOW_FILTERS = 'showFilters';
+    public const STATE_CHOOSING_LANGUAGE = 'choosingLanguage';
+    public const STATE_ANSWERING = 'answering';
+    public const STATE_FINISHED = 'finished';
+    public const STATE_ASKED_AGAIN = 'askedAgain';
+
+    public const LANG_EN = 'en';
+    public const LANG_RU = 'ru';
 
     protected $table = 'customer';
-    protected $fillable = ['phone', 'chat_id', 'state', 'username', 'update_id', 'first_name', 'last_name', 'user_id'];
+    protected $fillable = [
+        'phone',
+        'chat_id',
+        'state',
+        'username',
+        'update_id',
+        'first_name',
+        'last_name',
+        'language',
+        'answer_state',
+        'user_id'
+    ];
 
     /**
      * @return BelongsTo
@@ -50,26 +62,26 @@ class Customer extends Model
     /**
      * @return HasMany
      */
-    public function filters(): HasMany
+    public function customerAnswers(): HasMany
     {
-        return $this->hasMany(CustomerFilter::class);
+        return $this->hasMany(CustomerAnswer::class);
     }
 
-    /**
-     * @return HasMany
-     */
-    public function creds(): HasMany
-    {
-        return $this->hasMany(CustomerCred::class);
-    }
-
-    /**
-     * @param string $state
-     * @return bool
-     */
     public function setState(string $state): bool
     {
         $this->state = $state;
+        return $this->save();
+    }
+
+    public function setAnswerState(?int $state): bool
+    {
+        $this->answer_state = $state;
+        return $this->save();
+    }
+
+    public function setLang(string $lang): bool
+    {
+        $this->language = $lang;
         return $this->save();
     }
 
@@ -78,10 +90,5 @@ class Customer extends Model
         $this->update_id = $updateId;
         return $this->save();
     }
-
-//    public function scopeCred(Builder $query, string $spotType): Builder
-//    {
-//        return $query->where('spot_type', '=', $spotType);
-//    }
 
 }

@@ -57,13 +57,13 @@ class Test extends Command
      */
     public function handle()
     {
-        $this->telegram->removeWebhook();
+//        $this->telegram->removeWebhook();
 
         $this->runBot();
-//        while (true) {
-//            $this->runBot();
-//            sleep(2);
-//        }
+        while (true) {
+            $this->runBot();
+            sleep(1);
+        }
 
     }
 

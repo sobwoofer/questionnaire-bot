@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Eloquent\CustomerFilter;
-use App\Eloquent\CustomerItem;
+use App\Eloquent\Question;
+use App\Eloquent\CustomerAnswer;
 use App\Events\FirstFilterCrawled;
 use App\Services\Crawlers\IaaiCrawler;
 use App\Services\Crawlers\OlxCrawler;
@@ -37,22 +37,22 @@ class CrawlFilters extends Command
      */
     public function handle(): void
     {
-        $filters = CustomerFilter::query()->where('enabled', true)->get();
+        $filters = Question::query()->where('enabled', true)->get();
         $items = [];
 
-        /** @var CustomerFilter $filter */
+        /** @var Question $filter */
         foreach ($filters as $filter) {
             $message = 'crawling filter id ' . $filter->id. PHP_EOL;
             $this->info($message);
             Log::info($message);
             switch ($filter->spot_type) {
-                case CustomerFilter::SPOT_IAAI:
+                case Question::SPOT_IAAI:
                     $items = $this->iaaiCrawler->crawl($filter);
                     break;
-                case CustomerFilter::SPOT_OLX:
+                case Question::SPOT_OLX:
                     $items = $this->olxCrawler->crawl($filter);
                     break;
-                case CustomerFilter::SPOT_AUTORIA:
+                case Question::SPOT_AUTORIA:
                     $items = $this->checkFilterAutoria($filter);
                     break;
             }
@@ -63,7 +63,7 @@ class CrawlFilters extends Command
             Log::info($message);
 
             foreach ($items as $item) {
-                $customerItem = new CustomerItem();
+                $customerItem = new CustomerAnswer();
                 $customerItem->image = $item['image'];
                 $customerItem->url = $item['url'];
                 $customerItem->title = $item['title'];
@@ -80,12 +80,12 @@ class CrawlFilters extends Command
     }
 
 
-    private function checkFilterOlx(CustomerFilter $filter): array
+    private function checkFilterOlx(Question $filter): array
     {
         return [];
     }
 
-    private function checkFilterAutoria(CustomerFilter $filter): array
+    private function checkFilterAutoria(Question $filter): array
     {
         return [];
     }

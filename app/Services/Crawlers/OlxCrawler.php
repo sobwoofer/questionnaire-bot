@@ -3,7 +3,7 @@
 namespace App\Services\Crawlers;
 
 use App\Eloquent\CustomerCred;
-use App\Eloquent\CustomerFilter;
+use App\Eloquent\Question;
 use App\Services\ProxyService;
 use Facebook\WebDriver\WebDriverBy;
 use Symfony\Component\DomCrawler\Crawler;
@@ -23,12 +23,12 @@ class OlxCrawler
     }
 
     /**
-     * @param CustomerFilter $filter
+     * @param Question $filter
      * @param bool $browser
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function crawl(CustomerFilter $filter, $browser = false): array
+    public function crawl(Question $filter, $browser = false): array
     {
         $filterUrl = urldecode($filter->filter_url);
 

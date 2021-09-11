@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Eloquent\CustomerFilter;
-use App\Eloquent\CustomerItem;
+use App\Eloquent\Question;
+use App\Eloquent\CustomerAnswer;
 use App\Events\FreshItemsFound;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -41,11 +41,11 @@ class CheckFilterUpdates extends Command
      */
     public function handle(): void
     {
-        $filters = CustomerFilter::query()->where('enabled', true)->get();
+        $filters = Question::query()->where('enabled', true)->get();
         $message = 'filters found ' . count($filters) . PHP_EOL;
         $this->info($message);
         Log::info($message);
-        /** @var CustomerFilter $filter */
+        /** @var Question $filter */
         foreach ($filters as $filter) {
             $message = 'processing filter id ' . $filter->id. PHP_EOL;
             $this->info($message);
@@ -67,7 +67,7 @@ class CheckFilterUpdates extends Command
      */
     private function getFreshCreatedItems(int $filterId, string $schedule): array
     {
-        if (!$lastCheckDate = CustomerItem::query()->orderBy('created_at', 'desc')->pluck('created_at')->first()) {
+        if (!$lastCheckDate = CustomerAnswer::query()->orderBy('created_at', 'desc')->pluck('created_at')->first()) {
             throw new \Exception('cant get lastCheckDate');
         }
 
@@ -75,10 +75,10 @@ class CheckFilterUpdates extends Command
         $previousCheckDate = $lastCheckDate->clone()->sub(DateInterval::createFromDateString($schedule));
         $beforePreviousCheckDate = $previousCheckDate->clone()->sub(DateInterval::createFromDateString($schedule));
 
-        $lastLinkPack = CustomerItem::betweenDatesByFilterId($filterId, $previousCheckDate, $lastCheckDate)->pluck('url')->all();
+        $lastLinkPack = CustomerAnswer::betweenDatesByFilterId($filterId, $previousCheckDate, $lastCheckDate)->pluck('url')->all();
         $lastLinkPack = array_unique($lastLinkPack);
 
-        $previousLinkPack = CustomerItem::betweenDatesByFilterId($filterId, $beforePreviousCheckDate, $previousCheckDate)->pluck('url')->all();
+        $previousLinkPack = CustomerAnswer::betweenDatesByFilterId($filterId, $beforePreviousCheckDate, $previousCheckDate)->pluck('url')->all();
         $previousLinkPack = array_unique($previousLinkPack);
 
         Log::info('check-item-updates Found lastLinkPack: ' . count($lastLinkPack)

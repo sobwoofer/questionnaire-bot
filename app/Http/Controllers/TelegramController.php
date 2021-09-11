@@ -27,6 +27,5 @@ class TelegramController extends Controller
         $update = $this->telegram->getWebhookUpdates();
         $this->flowService->processUpdate($update);
         Log::info(json_encode($update));
-        $a = '';
     }
 }

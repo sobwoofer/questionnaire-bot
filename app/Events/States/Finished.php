@@ -7,22 +7,20 @@ use Telegram\Bot\Api;
 use Telegram\Bot\Objects\Update;
 
 /**
- * Class AddFilter
- * @package App\Events\States
+ * Class Start
  * @property Update $update
- * @property Api $telegramApiClient
  * @property Customer $customer
+ * @package App\Events\States
  */
-class AddFilter
+class Finished
 {
     public $update;
     public $customer;
     public $telegramApiClient;
 
-    public function __construct(Update $update, Customer $customer, Api $telegramApiClient)
+    public function __construct(Update $update, Customer $customer)
     {
         $this->update = $update;
         $this->customer = $customer;
-        $this->telegramApiClient = $telegramApiClient;
     }
 }

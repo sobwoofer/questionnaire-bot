@@ -4,16 +4,15 @@ namespace App\Services;
 
 use App\Eloquent\Customer;
 use App\Events\States\AddFilter;
+use App\Events\States\Answered;
+use App\Events\States\AskedAgain;
+use App\Events\States\ChosenLang;
+use App\Events\States\Finished;
 use App\Events\States\Hunting;
-use App\Events\States\Info;
 use App\Events\States\RemoveFilter;
 use App\Events\States\ShowFilters;
 use App\Events\States\Start;
-use App\Listeners\States\AddFilterListener;
-use App\Listeners\States\InfoListener;
-use App\Listeners\States\RemoveFilterListener;
-use App\Listeners\States\ShowFiltersListener;
-use App\Listeners\States\StartListener;
+use App\Listeners\States\FinishedListener;
 use Telegram\Bot\Api;
 use Telegram\Bot\Objects\Update;
 
@@ -33,7 +32,6 @@ class FlowService
 
     public function processUpdate(Update $update)
     {
-        $telegramApiClient = $this->telegram;
 
         $message = $update->getMessage();
         $chat = $message->getChat();
@@ -52,33 +50,34 @@ class FlowService
             return;
         }
 
-        switch ($text) {
-            case StartListener::ACTION: event(new Start($update, $customer, $telegramApiClient));
-                return;
-            case ShowFiltersListener::ACTION: event(new ShowFilters($update, $customer, $telegramApiClient));
-                return;
-            case AddFilterListener::ACTION: event(new AddFilter($update, $customer, $telegramApiClient));
-                return;
-            case RemoveFilterListener::ACTION: event(new RemoveFilter($update, $customer, $telegramApiClient));
-                return;
-            case InfoListener::ACTION: event(new Info($update, $customer, $telegramApiClient));
-                return;
-        }
+//        switch ($text) {
+//            case StartListener::ACTION: event(new Start($update, $customer, $telegramApiClient));
+//                return;
+//            case ShowFiltersListener::ACTION: event(new ShowFilters($update, $customer, $telegramApiClient));
+//                return;
+//            case AddFilterListener::ACTION: event(new AddFilter($update, $customer, $telegramApiClient));
+//                return;
+//            case RemoveFilterListener::ACTION: event(new RemoveFilter($update, $customer, $telegramApiClient));
+//                return;
+//            case InfoListener::ACTION: event(new Info($update, $customer, $telegramApiClient));
+//                return;
+//        }
+
+
 
         switch ($customer->state) {
-            case Customer::STATE_START: event(new Start($update, $customer, $telegramApiClient));
+            case Customer::STATE_START: event(new Start($update, $customer));
                 break;
-            case Customer::STATE_ADD_FILTER: event(new AddFilter($update, $customer, $telegramApiClient));
+            case Customer::STATE_CHOOSING_LANGUAGE: event(new ChosenLang($update, $customer));
                 break;
-            case Customer::STATE_ADD_FILTER_TITLE: event(new AddFilter($update, $customer, $telegramApiClient));
+            case Customer::STATE_ANSWERING: event(new Answered($update, $customer));
                 break;
-            case Customer::STATE_SHOW_FILTERS: event(new ShowFilters($update, $customer, $telegramApiClient));
+            case Customer::STATE_FINISHED: event(new Finished($update, $customer));
                 break;
-            case Customer::STATE_REMOVE_FILTER: event(new RemoveFilter($update, $customer, $telegramApiClient));
-                break;
-            case Customer::STATE_HUNTING: event(new Hunting($update, $customer, $telegramApiClient));
+            case Customer::STATE_ASKED_AGAIN: event(new AskedAgain($update, $customer));
                 break;
         }
+
     }
 
     /**

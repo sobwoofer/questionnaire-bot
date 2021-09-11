@@ -3,7 +3,7 @@
 namespace App\Events;
 
 use App\Eloquent\Customer;
-use App\Eloquent\CustomerFilter;
+use App\Eloquent\Question;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -16,7 +16,7 @@ use Illuminate\Queue\SerializesModels;
  * Class FreshItemsFound
  * @package App\Events
  * @property array $links
- * @property CustomerFilter $filter
+ * @property Question $filter
  */
 class FreshItemsFound
 {
@@ -25,7 +25,7 @@ class FreshItemsFound
     public $links;
     public $filter;
 
-    public function __construct(array $links, CustomerFilter $filter)
+    public function __construct(array $links, Question $filter)
     {
         $this->links = $links;
         $this->filter = $filter;
