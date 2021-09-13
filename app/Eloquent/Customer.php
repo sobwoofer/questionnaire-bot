@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $first_name
  * @property string $last_name
  * @property string $language
+ * @property string $role
  * @property integer $update_id
  * @property integer $user_id
  * @property integer $answer_state
@@ -33,6 +34,11 @@ class Customer extends Model
     public const STATE_ANSWERING = 'answering';
     public const STATE_FINISHED = 'finished';
     public const STATE_ASKED_AGAIN = 'askedAgain';
+    public const STATE_CHOOSING_DIRECTION = 'choosingDirection';
+
+    public const ROLE_USER = 'user';
+    public const ROLE_ADMIN = 'admin';
+    public const ROLE_MANAGER = 'manager';
 
     public const LANG_EN = 'en';
     public const LANG_RU = 'ru';
@@ -48,6 +54,7 @@ class Customer extends Model
         'last_name',
         'language',
         'answer_state',
+        'role',
         'user_id'
     ];
 

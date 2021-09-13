@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Sharp\Service;
+namespace App\Sharp\Customer;
 
-use App\Eloquent\Service;
+use App\Eloquent\Order;
 use Code16\Sharp\Form\Eloquent\WithSharpFormEloquentUpdater;
 use Code16\Sharp\Form\Fields\SharpFormTextField;
 use Code16\Sharp\Form\Layout\FormLayoutColumn;
 use Code16\Sharp\Form\SharpForm;
 
-class FormService extends SharpForm
+class FormOrder extends SharpForm
 {
     use WithSharpFormEloquentUpdater;
 
@@ -21,7 +21,7 @@ class FormService extends SharpForm
     public function find($id): array
     {
         return $this->transform(
-            Service::findOrFail($id)
+            Order::findOrFail($id)
         );
     }
 
@@ -32,8 +32,8 @@ class FormService extends SharpForm
      */
     public function update($id, array $data)
     {
-        $service = $id ? Service::findOrFail($id) : new Service;
-        $this->save($service, $data);
+        $order = $id ? Order::findOrFail($id) : new Order;
+        $this->save($order, $data);
     }
 
     /**
@@ -41,7 +41,7 @@ class FormService extends SharpForm
      */
     public function delete($id)
     {
-        Service::findOrFail($id)->find($id)->delete();
+        Order::findOrFail($id)->find($id)->delete();
     }
 
     /**

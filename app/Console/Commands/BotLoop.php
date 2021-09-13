@@ -2,20 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Eloquent\Customer;
-use App\Events\States\AddFilter;
-use App\Events\States\Info;
-use App\Events\States\RemoveFilter;
-use App\Events\States\ShowFilters;
-use App\Events\States\Start;
-use App\Listeners\States\AddFilterListener;
-use App\Listeners\States\InfoListener;
-use App\Listeners\States\RemoveFilterListener;
-use App\Listeners\States\ShowFiltersListener;
-use App\Listeners\States\StartListener;
+
 use App\Services\FlowService;
 use Illuminate\Console\Command;
-use App\Events\States\Hunting;
 use Telegram\Bot\Api;
 
 /**

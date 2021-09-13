@@ -28,26 +28,28 @@ class ChosenLangListener
         $message = $event->update->getMessage();
         $this->client->sendChatAction(['chat_id' => $message->getChat()->getId(), 'action' => 'typing']);
 
-        if ($message->getText() === self::LANG_EN) {
-            $event->customer->setLang('en');
-        } else {
-            $event->customer->setLang('ru');
-        }
+        $event->customer->setLang($message->getText() === self::LANG_EN ? Customer::LANG_EN : Customer::LANG_RU);
 
         $langColumn = 'question_' . $event->customer->language;
-        $nextQuestion = Question::where('position', '=', 1)->first();
+        $dirQuestion = Question::query()->where('role', '=', Question::ROLE_DIRECTION)->first();
 
-        $this->send($message->getChat()->getId(), $nextQuestion->$langColumn);
+        $this->send($message->getChat()->getId(), $dirQuestion->$langColumn, $event->customer->language);
 
-        $event->customer->setAnswerState(1);
-        $event->customer->setState(Customer::STATE_ANSWERING);
+        $event->customer->setState(Customer::STATE_CHOOSING_DIRECTION);
         $event->customer->setUpdateId($event->update->getUpdateId());
     }
 
-    public function send($chatId, $text)
+    public function send(string $chatId, string $text, string $lang)
     {
+        $keyboard = [[
+            $lang === Customer::LANG_EN ? 'Here' : 'Здесь',
+            $lang === Customer::LANG_EN ? 'Doc' : 'Документ',
+        ]];
+
         $reply_markup = $this->client->replyKeyboardMarkup([
-            'remove_keyboard' => true
+            'keyboard' => $keyboard,
+            'resize_keyboard' => true,
+            'one_time_keyboard' => true,
         ]);
 
         $this->client->sendMessage([
@@ -57,8 +59,4 @@ class ChosenLangListener
         ]);
     }
 
-    private function getQuestion(string $lang, int $position)
-    {
-        return Question::query()->where('position', $position)->first('question_' . $lang);
-    }
 }

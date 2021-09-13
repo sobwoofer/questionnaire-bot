@@ -5,6 +5,7 @@ namespace App\Listeners\States;
 use App\Eloquent\Customer;
 use App\Eloquent\CustomerAnswer;
 use App\Eloquent\Question;
+use App\Events\FinishedBriefEvent;
 use App\Events\States\Answered;
 use Telegram\Bot\Api;
 
@@ -38,10 +39,15 @@ class AnsweredListener
         $nextQuestion = Question::query()->where('position', $answerPosition)->first();
 
         if (!$nextQuestion) {
-            //TODO event thanks and send all customer answers to admin
+            //TODO event send all customer answers to admin
             $event->customer->setState(Customer::STATE_FINISHED);
+            $finishText = Question::where('role', '=', Question::ROLE_FINAL)->first();
+
             $event->customer->setAnswerState(null);
-            $this->client->sendMessage(['chat_id' => $message->getChat()->getId(), 'text' => 'Thanks',]);
+            $this->client->sendMessage(['chat_id' => $message->getChat()->getId(), 'text' => $finishText->$langColumn,]);
+            $event->customer->setUpdateId($event->update->getUpdateId());
+
+            event(new FinishedBriefEvent($event->customer, true));
             return;
         }
 

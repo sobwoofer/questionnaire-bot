@@ -15,6 +15,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Question extends Model
 {
+    public const ROLE_DIRECTION = 'direction';
+    public const ROLE_QUESTION = 'question';
+    public const ROLE_FINAL = 'final';
+    public const ROLE_DOC = 'doc';
+
     protected $table = 'question';
     protected $fillable = ['question_ru', 'question_en', 'position'];
 

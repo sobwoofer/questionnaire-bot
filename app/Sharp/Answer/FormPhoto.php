@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Sharp\Photo;
+namespace App\Sharp\Answer;
 
 use App\Eloquent\Photo;
 use Code16\Sharp\Form\Eloquent\WithSharpFormEloquentUpdater;

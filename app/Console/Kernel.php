@@ -3,7 +3,6 @@
 namespace App\Console;
 
 use App\Console\Commands\CheckFilterUpdates;
-use App\Console\Commands\CrawlFilters;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,7 +15,6 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         CheckFilterUpdates::class,
-        CrawlFilters::class,
     ];
 
     /**
@@ -27,7 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('crawl-filters')->twiceDaily(5, 18);
         $schedule->command('check-filter-updates')->twiceDaily(6, 19);
     }
 

@@ -1,16 +1,21 @@
 <?php
 
 return [
-    'name' => 'Saturn',
+    'name' => 'Bad bot',
     'custom_url_segment' => 'admin',
     'entities' => [
-        'tag' => [
-            'list' => \App\Sharp\Tag\ListTag::class,
-            'form' => \App\Sharp\Tag\FormTag::class,
-            'show' => \App\Sharp\Tag\ShowTag::class,
+        'customer' => [
+            'list' => \App\Sharp\Customer\ListCustomer::class,
+            'show' => \App\Sharp\Customer\ShowCustomer::class,
+//            'form' => \App\Sharp\Tag\FormTag::class,
 //            'validator' => \App\Sharp\SpaceshipSharpValidator::class,
 //            'policy' => \App\Sharp\Policies\SpaceshipPolicy::class
-        ]
+        ],
+        'answer' => [
+            'list' => \App\Sharp\Answer\ListAnswer::class,
+            'show' => \App\Sharp\Answer\ShowAnswer::class,
+        ],
+
     ],
     'auth' => [
         'login_attribute' => 'email',
@@ -19,14 +24,14 @@ return [
     ],
     'menu' => [
         [
-            'label' => 'Post',
+            'label' => 'Customers',
             'icon' => 'fa-superpowers',
-            'entity' => 'post'
+            'entity' => 'customer'
         ],
-        [
-            'label' => 'Tag',
-            'icon' => 'fa-superpowers',
-            'entity' => 'tag'
-        ]
+//        [
+//            'label' => 'Answers',
+//            'icon' => 'fa-superpowers',
+//            'entity' => 'answer'
+//        ]
     ]
 ];

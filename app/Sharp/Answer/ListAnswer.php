@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Sharp\Tag;
+namespace App\Sharp\Answer;
 
-use App\Eloquent\Tag;
+use App\Eloquent\CustomerAnswer;
 use Code16\Sharp\EntityList\Containers\EntityListDataContainer;
 use Code16\Sharp\EntityList\EntityListQueryParams;
 use Code16\Sharp\EntityList\SharpEntityList;
 
-class ListTag extends SharpEntityList
+class ListAnswer extends SharpEntityList
 {
     /**
     * Build list containers using ->addDataContainer()
@@ -17,27 +17,18 @@ class ListTag extends SharpEntityList
     public function buildListDataContainers()
     {
         $this->addDataContainer(
-            EntityListDataContainer::make('id')
-                ->setLabel('Id')
-                ->setSortable()
-        )->addDataContainer(
-            EntityListDataContainer::make('label')
-                ->setLabel('Label')
+            EntityListDataContainer::make('answer')
+                ->setLabel('Answer')
                 ->setSortable()
                 ->setHtml()
         )->addDataContainer(
-            EntityListDataContainer::make('tag')
-                ->setLabel('Tag')
+            EntityListDataContainer::make('question')
+                ->setLabel('Question')
                 ->setSortable()
                 ->setHtml()
         )->addDataContainer(
             EntityListDataContainer::make('created_at')
-                ->setLabel('Created At')
-                ->setSortable()
-                ->setHtml()
-        )->addDataContainer(
-            EntityListDataContainer::make('updated_at')
-                ->setLabel('Updated At')
+                ->setLabel('Date')
                 ->setSortable()
                 ->setHtml()
         );
@@ -51,11 +42,9 @@ class ListTag extends SharpEntityList
 
     public function buildListLayout()
     {
-        $this->addColumn('id', 2)
-            ->addColumn('label', 2)
-            ->addColumn('tag', 2)
-            ->addColumn('created_at', 2)
-            ->addColumn('updated_at', 2);
+        $this->addColumn('question', 6)
+            ->addColumn('answer', 4)
+            ->addColumn('created_at', 2);
     }
 
     /**
@@ -66,8 +55,7 @@ class ListTag extends SharpEntityList
     public function buildListConfig()
     {
         $this->setInstanceIdAttribute('id')
-            ->setSearchable()
-            ->setDefaultSort('id', 'asc')
+            ->setSearchable(false)
             ->setPaginated();
     }
 
@@ -79,6 +67,21 @@ class ListTag extends SharpEntityList
     */
     public function getListData(EntityListQueryParams $params)
     {
-        return $this->transform(Tag::all());
+        $entity = CustomerAnswer::select('customer_answer.*')->distinct();
+
+        if ($ids = $params->specificIds()) {
+            $entity->whereIn('id', $ids);
+        } else {
+            if ($customerId = $params->filterFor('customer')) {
+                $entity->leftJoin('question', 'question.id', '=', 'customer_answer.question_id')
+                    ->where('customer_answer.customer_id', $customerId);
+            }
+        }
+
+        $this->setCustomTransformer('question', function($vendors, CustomerAnswer $item) {
+            return $item->question->question_ru;
+        });
+
+        return $this->transform($entity->paginate(30));
     }
 }

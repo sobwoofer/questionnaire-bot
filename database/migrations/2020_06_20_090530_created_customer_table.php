@@ -22,10 +22,9 @@ class CreatedCustomerTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('state');
+            $table->string('role')->default('user');
             $table->string('language')->nullable();
             $table->integer('answer_state')->nullable();
-//            $table->bigInteger('user_id')->unsigned()->index()->nullable();
-//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

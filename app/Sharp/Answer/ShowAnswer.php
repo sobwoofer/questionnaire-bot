@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Sharp\Order;
+namespace App\Sharp\Answer;
 
 use Code16\Sharp\Show\Fields\SharpShowTextField;
 use Code16\Sharp\Show\Layout\ShowLayoutColumn;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\Show\SharpShow;
 
-class ShowOrder extends SharpShow
+class ShowAnswer extends SharpShow
 {
     /**
      * Retrieve a Model for the form and pack all its data as JSON.
@@ -18,9 +18,9 @@ class ShowOrder extends SharpShow
     public function find($id): array
     {
         // Replace/complete this code
-        $order = Order::findOrFail(1);
+        $photo = Photo::findOrFail(1);
 
-        return $this->transform($order);
+        return $this->transform($photo);
     }
 
     /**

@@ -12,12 +12,13 @@ class CreatedQuestionTable extends Migration
      * @return void
      */
     public function up()
-    {//TODO Questions table and answer to user
+    {
         Schema::create('question', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('question_ru');
             $table->text('question_en');
-            $table->integer('position');
+            $table->integer('position')->nullable();
+            $table->string('role');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

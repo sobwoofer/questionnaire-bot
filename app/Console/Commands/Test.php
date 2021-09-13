@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Eloquent\Customer;
+use App\Events\FinishedBriefEvent;
 use App\Events\States\AddFilter;
 use App\Events\States\Info;
 use App\Events\States\RemoveFilter;
@@ -59,7 +60,13 @@ class Test extends Command
     {
 //        $this->telegram->removeWebhook();
 
-        $this->runBot();
+        /** @var Customer $customer */
+        $customer = Customer::query()->find(3);
+
+        event(new FinishedBriefEvent($customer, false));
+
+
+//        $this->runBot();
         while (true) {
             $this->runBot();
             sleep(1);
