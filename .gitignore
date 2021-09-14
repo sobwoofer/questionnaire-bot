@@ -7,6 +7,7 @@
 docker-compose.env
 .well-known/
 .env
+.env.backup
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
